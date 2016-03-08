@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <!-- persistence.xml需要放到Classpath下面 -->
+    <persistence-unit name="domain" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <!-- 用户 -->
+        <class>com.sw.domain.entity.note.Note</class>
+        <class>com.sw.domain.entity.game.GameRecord</class>
+        <class>com.sw.domain.entity.controller.Admin</class>
+        <class>com.sw.domain.entity.controller.Vm</class>
+        <class>com.sw.domain.entity.controller.Project</class>
+        <!-- 提供商——Hibernate -->
+        <properties>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.c3p0.max_size" value="5"/>
+            <property name="hibernate.c3p0.min_size" value="1"/>
+            <property name="hibernate.c3p0.timeout" value="600"/>
+            <property name="hibernate.c3p0.max_statements" value="100"/>
+            <property name="hibernate.c3p0.acquire_increment" value="2"/>
+            <property name="hibernate.c3p0.idle_test_period" value="120"/>
+            <property name="hibernate.c3p0.validate" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

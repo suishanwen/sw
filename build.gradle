@@ -1,0 +1,109 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+apply plugin: 'eu.appsatori.fatjar'
+
+buildscript {
+    repositories {
+        mavenLocal();
+        mavenCentral();
+        jcenter();
+    }
+    dependencies {
+        classpath "eu.appsatori:gradle-fatjar-plugin:0.3"
+    }
+
+}
+
+sourceCompatibility = 1.8
+
+group = 'com.sw'
+version = '0.1.1'
+
+project.ext {
+    i0Version = '2.0.12-SNAPSHOT'
+    jettyVersion = '9.0.0.M3'
+    jerseyVersion = '1.17.1'
+    jacksonVersion = '2.1.1'
+    guavaVersion = '13.0.1'
+    guiceVersion = '3.0'
+
+    hibernate = '4.3.0.Final'
+
+    mockitoVersion = '1.9.5'
+    junitVersion = '4.11'
+
+}
+
+repositories {
+    mavenLocal();
+    maven { url 'http://10.0.30.78:8081/nexus/content/groups/public/' }
+    maven { url 'http://10.0.30.78:8081/nexus/content/repositories/heren-snapshots' }
+    maven { url 'http://182.92.169.98:8081/nexus/content/groups/public/' }
+    maven { url 'http://182.92.169.98:8081/nexus/content/repositories/snapshots' }
+    mavenCentral();
+}
+
+dependencies {
+    //compile "com.heren.i0:i0-grizzly:$i0Version"
+
+    compile 'mysql:mysql-connector-java:5.1.6'
+    compile "org.eclipse.jetty:jetty-server:$jettyVersion"
+    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+
+
+    compile "com.sun.jersey:jersey-core:$jerseyVersion"
+    compile "com.sun.jersey:jersey-server:$jerseyVersion"
+    compile "com.sun.jersey:jersey-servlet:$jerseyVersion"
+    compile "com.sun.jersey.contribs:jersey-guice:$jerseyVersion"
+
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
+
+    runtime "com.fasterxml.jackson.datatype:jackson-datatype-guava:$jacksonVersion"
+    runtime "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jacksonVersion"
+
+    compile "com.google.guava:guava:$guavaVersion"
+
+
+    compile "com.google.inject:guice:$guiceVersion"
+    compile "com.google.inject.extensions:guice-assistedinject:$guiceVersion"
+    compile "com.google.inject.extensions:guice-servlet:$guiceVersion"
+    compile "com.google.inject.extensions:guice-persist:$guiceVersion"
+    compile "com.google.inject.extensions:guice-throwingproviders:$guiceVersion"
+    compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
+
+    compile "org.hibernate:hibernate-entitymanager:4.1.7.Final"
+
+    //compile "com.oracle:ojdbc6:11.2.0.1.0"
+
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-all:$mockitoVersion"
+
+
+}
+
+/*sourceSets {
+    main {
+        resources {
+            srcDirs += 'src/main/webapp'
+        }
+    }
+}*/
+
+fatJar {
+    baseName = 'sw'
+    manifest {
+        attributes 'Main-Class': 'com.sw.LauncherStart'
+    }
+    exclude 'META-INF/MANIFEST.MF', '**/*.RSA', '**/*.SF', '**/*.DSA'
+    exclude "about_files/*"
+    exclude "about.html"
+    exclude "plugin.properties"
+    exclude "jetty-dir.css"
+    exclude "META-INF/ECLIPSEF.*"
+    exclude "com/heren/his/commons/*"
+}
+
+
