@@ -69,24 +69,24 @@ public class VmResource {
     }
 
     @GET
-    @Path("get")
+    @Path("g")
     @OnException("GetSingleVmFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getVmSingle(@QueryParam("unique") String unique){
-        return VmFacade.getVmSingle(unique);
+    public String getVmSingle(@QueryParam("u") String u){
+        return VmFacade.getVmSingle(u);
     }
 
     @GET
-    @Path("upload")
+    @Path("u")
     @OnException("VmUploadFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public void changeProjectSingle(@QueryParam("unique") String unique,
-                                    @QueryParam("project") String project,
-                                    @QueryParam("state") Integer state,
-                                    @QueryParam("success") Integer success,
-                                    @QueryParam("fail") Integer fail,
-                                    @QueryParam("timeout") Integer timeout,
-                                    @QueryParam("message") String message){
-        VmFacade.uploadVmInfo(unique,project,state,success,fail,timeout,message);
+    public void changeProjectSingle(@QueryParam("u") String u,
+                                    @QueryParam("p") String p,
+                                    @QueryParam("st") Integer st,
+                                    @QueryParam("sc") Integer sc,
+                                    @QueryParam("f") Integer f,
+                                    @QueryParam("t") Integer t,
+                                    @QueryParam("m") String m){
+        VmFacade.uploadVmInfo(u,p,st,sc,f,t,m);
     }
 }
