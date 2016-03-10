@@ -20,7 +20,7 @@ public class AdminResource {
         this.adminFacade = adminFacade;
     }
 
-    @GET
+    @POST
     @OnException("GetAdminListFail")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Admin> getAllAdmin(){
