@@ -80,13 +80,17 @@ public class VmResource {
     @Path("u")
     @OnException("VmUploadFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public void changeProjectSingle(@QueryParam("u") String u,
+    public String uploadVmSingle(@QueryParam("u") String u,
                                     @QueryParam("p") String p,
                                     @QueryParam("st") Integer st,
                                     @QueryParam("sc") Integer sc,
                                     @QueryParam("f") Integer f,
                                     @QueryParam("t") Integer t,
                                     @QueryParam("m") String m){
-        VmFacade.uploadVmInfo(u,p,st,sc,f,t,m);
+        String project=VmFacade.getVmSingle(u);
+        if(project!=null&&project.equals(p)){
+            VmFacade.uploadVmInfo(u,st,sc,f,t,m);
+        }
+        return project;
     }
 }

@@ -51,7 +51,7 @@ public class VmFacade extends BaseFacade{
 
     @Transactional
     public void changeProjectAll(String admin,String project){
-        entityManager.createQuery("update Vm set project=:project,success=0,fail=0,timeout=0,message=null,startTime=:date,reportTime=:date where admin=:admin and state<>-1")
+        entityManager.createQuery("update Vm set project=:project,success=0,fail=0,timeout=0,message=null,startTime=:date,reportTime=null where admin=:admin and state<>-1")
                 .setParameter("admin",admin).setParameter("project",project).setParameter("date",new Date()).executeUpdate();
     }
 
@@ -64,7 +64,7 @@ public class VmFacade extends BaseFacade{
         vm.setFail(0);
         vm.setTimeout(0);
         vm.setStartTime(date);
-        vm.setReportTime(date);
+        vm.setReportTime(null);
         vm.setMessage(null);
         entityManager.merge(vm);
     }
@@ -79,11 +79,8 @@ public class VmFacade extends BaseFacade{
 
 
     @Transactional
-    public void uploadVmInfo(String uniqueIdentification,String project,Integer state,Integer success,Integer fail,Integer timeout,String message){
+    public void uploadVmInfo(String uniqueIdentification,Integer state,Integer success,Integer fail,Integer timeout,String message){
         Vm vm=getVm(uniqueIdentification);
-        if(project!=null){
-            vm.setProject(project);
-        }
         if(state!=null){
             vm.setState(state);
         }
