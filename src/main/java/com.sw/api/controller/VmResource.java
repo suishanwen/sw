@@ -1,8 +1,6 @@
 package com.sw.api.controller;
 
-import com.sw.domain.entity.controller.Admin;
 import com.sw.domain.entity.controller.Vm;
-import com.sw.domain.facade.controller.AdminFacade;
 import com.sw.domain.facade.controller.VmFacade;
 import com.sw.domain.util.OnException;
 

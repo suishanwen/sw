@@ -1,7 +1,6 @@
 package com.sw.domain.entity.controller;
 
 import javax.persistence.*;
-import javax.swing.*;
 import java.util.Date;
 
 @Entity
