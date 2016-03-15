@@ -103,6 +103,7 @@ public class VmFacade extends BaseFacade{
     public String getVmSingle(String uniqueIdentification){
         Vm vm=getVm(uniqueIdentification);
         vm.setReportTime(new Date());
+        entityManager.merge(vm);
         return vm.getProject();
     }
 
