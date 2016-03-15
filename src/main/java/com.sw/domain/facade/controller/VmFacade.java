@@ -102,6 +102,14 @@ public class VmFacade extends BaseFacade{
 
     public String getVmSingle(String uniqueIdentification){
         Vm vm=getVm(uniqueIdentification);
+        vm.setReportTime(new Date());
         return vm.getProject();
+    }
+
+    @Transactional
+    public void switchVmDm(String uniqueIdentification){
+        Vm vm=getVm(uniqueIdentification);
+        vm.setProject("XT-DM");
+        vm.setStartTime(new Date());
     }
 }

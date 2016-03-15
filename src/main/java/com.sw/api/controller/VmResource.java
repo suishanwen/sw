@@ -93,4 +93,12 @@ public class VmResource {
         }
         return project;
     }
+
+    @GET
+    @Path("dm")
+    @OnException("SwitchDmFail")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void switchVmDm(@QueryParam("u") String u){
+         VmFacade.switchVmDm(u);
+    }
 }
