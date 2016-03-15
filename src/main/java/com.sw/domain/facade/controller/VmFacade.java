@@ -100,11 +100,11 @@ public class VmFacade extends BaseFacade{
         entityManager.merge(vm);
     }
 
+    @Transactional
     public String getVmSingle(String uniqueIdentification){
         Vm vm=getVm(uniqueIdentification);
         vm.setReportTime(new Date());
-        entityManager.merge(vm);
-        return vm.getProject();
+        return entityManager.merge(vm).getProject();
     }
 
     @Transactional
@@ -112,5 +112,6 @@ public class VmFacade extends BaseFacade{
         Vm vm=getVm(uniqueIdentification);
         vm.setProject("XT-DM");
         vm.setStartTime(new Date());
+        entityManager.merge(vm);
     }
 }
