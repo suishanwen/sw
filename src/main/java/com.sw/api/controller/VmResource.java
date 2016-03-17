@@ -56,8 +56,8 @@ public class VmResource {
     @Path("change-project-all")
     @OnException("ChangeAllVmFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public void changeProjectAll(@QueryParam("admin") String admin,@QueryParam("project") String project ){
-        VmFacade.changeProjectAll(admin,project);
+    public void changeProjectAll(@QueryParam("admin") String admin,@QueryParam("project") String project ,@QueryParam("dmFlag") Integer dmFlag ){
+        VmFacade.changeProjectAll(admin,project,dmFlag);
     }
 
     @POST

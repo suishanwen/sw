@@ -50,9 +50,13 @@ public class VmFacade extends BaseFacade{
     }
 
     @Transactional
-    public void changeProjectAll(String admin,String project){
-        entityManager.createQuery("update Vm set project=:project,success=0,fail=0,timeout=0,message=null,startTime=:date,reportTime=null where admin=:admin and state<>-1")
-                .setParameter("admin",admin).setParameter("project",project).setParameter("date",new Date()).executeUpdate();
+    public void changeProjectAll(String admin, String project, Integer dmFlag) {
+        String sql = "update Vm set project=:project,success=0,fail=0,timeout=0,message=null,startTime=:date,reportTime=null where admin=:admin and state<>-1 ";
+        if (dmFlag == 1) {
+            sql += "and project like '%XT-DM%'";
+        }
+        entityManager.createQuery(sql)
+                .setParameter("admin", admin).setParameter("project", project).setParameter("date", new Date()).executeUpdate();
     }
 
     @Transactional
