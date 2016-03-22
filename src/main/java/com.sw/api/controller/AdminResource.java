@@ -58,4 +58,12 @@ public class AdminResource {
     public Admin loginAdmin(Admin admin){
          return adminFacade.loginAdmin(admin);
     }
+
+    @GET
+    @Path("ei")
+    @OnException("GetEmployeeIdFail")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getEI(String userName){
+        return adminFacade.getEmployeeId(userName);
+    }
 }

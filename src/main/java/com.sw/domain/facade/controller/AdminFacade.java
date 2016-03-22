@@ -49,4 +49,15 @@ public class AdminFacade extends BaseFacade{
             return null;
         }
     }
+
+    public String getEmployeeId(String userName) {
+        List<Admin> a = entityManager.createQuery("select a from Admin a where a.admin=:admin")
+                .setParameter("admin", userName)
+                .getResultList();
+        if(a.size()>0){
+            String employeeNo=a.get(0).getEmployeeNo();
+            return employeeNo.split("|")[0];
+        }
+        return "";
+    }
 }

@@ -11,6 +11,7 @@ public class Admin {
     private String admin;
     private String password;
     private String state;
+    private String employeeNo;
 
     public Admin() {
     }
@@ -20,10 +21,11 @@ public class Admin {
         this.password = password;
     }
 
-    public Admin(String admin, String password, String state) {
+    public Admin(String admin, String password, String state,String employeeNo) {
         this.admin = admin;
         this.password = password;
         this.state = state;
+        this.employeeNo = employeeNo;
     }
 
     public Integer getId() {
@@ -56,5 +58,13 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmployeeNo() {
+        return employeeNo;
+    }
+
+    public void setEmployeeNo(String employeeNo) {
+        this.employeeNo = employeeNo;
     }
 }
