@@ -60,8 +60,8 @@ public class AdminResource {
     @Path("ei")
     @OnException("GetEmployeeIdFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getEI(String userName){
-        return adminFacade.getEmployeeId(userName);
+    public String getEI(@QueryParam("u") String u){
+        return adminFacade.getEmployeeId(u);
     }
 
     @POST
