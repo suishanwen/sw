@@ -56,7 +56,7 @@ public class AdminFacade extends BaseFacade{
                 .getResultList();
         if(admins.size()>0){
             String employeeNo=admins.get(0).getEmployeeNo();
-            return employeeNo.split("|")[0];
+            return employeeNo.split("\\|")[0];
         }
         return "";
     }
