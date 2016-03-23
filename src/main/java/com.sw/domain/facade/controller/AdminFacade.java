@@ -61,14 +61,15 @@ public class AdminFacade extends BaseFacade{
         return "";
     }
 
-    public void changeEmployeeId(String admin,String employeeNo){
+    public String changeEmployeeId(String admin,String employeeNo){
         List<Admin> admins = entityManager.createQuery("select a from Admin a where a.admin=:admin")
                 .setParameter("admin", admin)
                 .getResultList();
         if(admins.size()>0){
             Admin a=admins.get(0);
             a.setEmployeeNo(employeeNo);
-            entityManager.merge(a);
+            return entityManager.merge(a).getEmployeeNo();
         }
+        return "";
     }
 }

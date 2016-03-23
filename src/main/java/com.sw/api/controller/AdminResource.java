@@ -68,7 +68,7 @@ public class AdminResource {
     @Path("eic")
     @OnException("ChangeEmployeeIdFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public void setEI(@QueryParam("admin") String admin, @QueryParam("employeeNo") String employeeNo){
-         adminFacade.changeEmployeeId(admin,employeeNo);
+    public String setEI(@QueryParam("admin") String admin, @QueryParam("employeeNo") String employeeNo){
+         return adminFacade.changeEmployeeId(admin,employeeNo);
     }
 }
