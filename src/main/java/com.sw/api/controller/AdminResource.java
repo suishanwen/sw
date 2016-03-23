@@ -5,10 +5,7 @@ import com.sw.domain.facade.controller.AdminFacade;
 import com.sw.domain.util.OnException;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -65,5 +62,13 @@ public class AdminResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getEI(String userName){
         return adminFacade.getEmployeeId(userName);
+    }
+
+    @POST
+    @Path("eic")
+    @OnException("ChangeEmployeeIdFail")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void setEI(@QueryParam("admin") String admin, @QueryParam("employeeNo") String employeeNo){
+         adminFacade.changeEmployeeId(admin,employeeNo);
     }
 }
