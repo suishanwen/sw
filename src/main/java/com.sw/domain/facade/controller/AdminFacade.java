@@ -61,6 +61,7 @@ public class AdminFacade extends BaseFacade{
         return "";
     }
 
+    @Transactional
     public String changeEmployeeId(String admin,String employeeNo){
         List<Admin> admins = entityManager.createQuery("select a from Admin a where a.admin=:admin")
                 .setParameter("admin", admin)
