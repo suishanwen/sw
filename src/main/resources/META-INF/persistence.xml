@@ -13,6 +13,8 @@
         <class>com.sw.domain.entity.controller.Admin</class>
         <class>com.sw.domain.entity.controller.Vm</class>
         <class>com.sw.domain.entity.controller.Project</class>
+        <class>com.sw.domain.entity.vote.Controller</class>
+        <class>com.sw.domain.entity.util.SwSequence</class>
         <!-- 提供商——Hibernate -->
         <properties>
             <property name="hibernate.show_sql" value="false"/>
