@@ -16,6 +16,7 @@ public class Controller {
     private String taskName;
     private String cpu;
     private String hdd;
+    private String arrDrop;
     @Temporal(TemporalType.TIMESTAMP)
     private Date operateDateTime;
     @Temporal(TemporalType.TIMESTAMP)
@@ -102,6 +103,14 @@ public class Controller {
 
     public void setHdd(String hdd) {
         this.hdd = hdd;
+    }
+
+    public String getArrDrop() {
+        return arrDrop;
+    }
+
+    public void setArrDrop(String arrDrop) {
+        this.arrDrop = arrDrop;
     }
 
     public Date getOperateDateTime() {

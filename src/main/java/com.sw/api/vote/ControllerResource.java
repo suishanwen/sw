@@ -26,8 +26,9 @@ public class ControllerResource {
     @QueryParam("workerId") String workerId,
     @QueryParam("vm1") Integer vm1,
     @QueryParam("vm2") Integer vm2,
-    @QueryParam("taskName") String taskName) {
-        return Response.ok().entity(controllerFacade.report(id,workerId,vm1,vm2,taskName)).build();
+    @QueryParam("taskName") String taskName,
+    @QueryParam("arrDrop") String arrDrop) {
+        return Response.ok().entity(controllerFacade.report(id,workerId,vm1,vm2,taskName,arrDrop)).build();
     }
 
     @GET
