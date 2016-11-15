@@ -32,7 +32,7 @@ public class DbModule extends AbstractModule {
         properties.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.Driver");
         properties.put("javax.persistence.jdbc.url", "jdbc:mysql://127.0.0.1:3306/sw");
         properties.put("javax.persistence.jdbc.user", "root");
-        properties.put("javax.persistence.jdbc.password", "root");
+        properties.put("javax.persistence.jdbc.password", "");
         return properties;
     }
 
