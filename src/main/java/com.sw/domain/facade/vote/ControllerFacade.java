@@ -69,7 +69,7 @@ public class ControllerFacade extends BaseFacade {
     }
 
     public List<Controller> identify(String identify) {
-        return entityManager.createQuery("from Controller where identify=:identify")
+        return entityManager.createQuery("from Controller where identify=:identify order by sortNo asc")
                 .setParameter("identify",identify).getResultList();
     }
 }

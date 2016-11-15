@@ -18,6 +18,7 @@ public class Controller {
     private String cpu;
     private String hdd;
     private String arrDrop;
+    private Integer sortNo;
     @Temporal(TemporalType.TIMESTAMP)
     private Date operateDateTime;
     @Temporal(TemporalType.TIMESTAMP)
@@ -120,6 +121,14 @@ public class Controller {
 
     public void setArrDrop(String arrDrop) {
         this.arrDrop = arrDrop;
+    }
+
+    public Integer getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(Integer sortNo) {
+        this.sortNo = sortNo;
     }
 
     public Date getOperateDateTime() {
