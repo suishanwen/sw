@@ -7,6 +7,7 @@ import java.util.Date;
 public class Controller {
     @Id
     private String id;
+    private String identify;
     private String workerId;
     private Integer vm1;
     private Integer vm2;
@@ -31,6 +32,14 @@ public class Controller {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIdentify() {
+        return identify;
+    }
+
+    public void setIdentify(String identify) {
+        this.identify = identify;
     }
 
     public String getWorkerId() {

@@ -57,4 +57,12 @@ public class ControllerResource {
         return Response.ok().entity(controllerFacade.manage(controller)).build();
     }
 
+
+    @GET
+    @Path("identify")
+    @OnException("identifyFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response identifyController(String identify) {
+        return Response.ok().entity(controllerFacade.identify(identify)).build();
+    }
 }

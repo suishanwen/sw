@@ -67,4 +67,9 @@ public class ControllerFacade extends BaseFacade {
         entityManager.persist(controller);
         return controller;
     }
+
+    public List<Controller> identify(String identify) {
+        return entityManager.createQuery("from Controller where identify=:identify")
+                .setParameter("identify",identify).getResultList();
+    }
 }
