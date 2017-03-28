@@ -21,7 +21,6 @@ group = 'com.sw'
 version = '0.1.1'
 
 project.ext {
-    i0Version = '2.0.12-SNAPSHOT'
     jettyVersion = '9.0.0.M3'
     jerseyVersion = '1.17.1'
     jacksonVersion = '2.1.1'
