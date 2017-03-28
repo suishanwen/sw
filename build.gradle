@@ -5,6 +5,10 @@ apply plugin: 'maven'
 apply plugin: 'eu.appsatori.fatjar'
 
 buildscript {
+    repositories {
+        maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
+    }
+
     dependencies {
         classpath "eu.appsatori:gradle-fatjar-plugin:0.3"
     }
