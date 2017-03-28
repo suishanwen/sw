@@ -7,8 +7,8 @@ apply plugin: 'eu.appsatori.fatjar'
 buildscript {
     repositories {
         maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
     }
-
     dependencies {
         classpath "eu.appsatori:gradle-fatjar-plugin:0.3"
     }
@@ -21,51 +21,43 @@ group = 'com.sw'
 version = '0.1.1'
 
 project.ext {
+    i0Version = '2.0.12-SNAPSHOT'
     jettyVersion = '9.0.0.M3'
     jerseyVersion = '1.17.1'
-    jacksonVersion = '2.6.1'
+    jacksonVersion = '2.1.1'
     guavaVersion = '13.0.1'
     guiceVersion = '3.0'
-    jpaVersion = '1.0.1.Final'
-    junitVersion = '4.12'
-    servletApi = '2.5'
+    hibernate = '4.3.0.Final'
+    junitVersion = '4.11'
 }
 
 repositories {
-	maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
 }
 
 dependencies {
-    //compile "com.oracle:ojdbc6:11.2.0.1.0"
+    //    compile "com.oracle:ojdbc6:11.2.0.1.0"
     compile 'mysql:mysql-connector-java:5.1.6'
     compile "org.eclipse.jetty:jetty-server:$jettyVersion"
     compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
-
     compile "com.sun.jersey:jersey-core:$jerseyVersion"
     compile "com.sun.jersey:jersey-server:$jerseyVersion"
     compile "com.sun.jersey:jersey-servlet:$jerseyVersion"
     compile "com.sun.jersey.contribs:jersey-guice:$jerseyVersion"
-
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
+    compile "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.6.1"
     runtime "com.fasterxml.jackson.datatype:jackson-datatype-guava:$jacksonVersion"
-    compile "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jacksonVersion"
-
-    compile "com.google.guava:guava:$guavaVersion"
-
     compile "com.google.inject:guice:$guiceVersion"
     compile "com.google.inject.extensions:guice-assistedinject:$guiceVersion"
     compile "com.google.inject.extensions:guice-servlet:$guiceVersion"
     compile "com.google.inject.extensions:guice-persist:$guiceVersion"
     compile "com.google.inject.extensions:guice-throwingproviders:$guiceVersion"
     compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
-
-    compile "javax.servlet:servlet-api:$servletApi"
-
-    compile "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:$jpaVersion"
-
+    compile "org.hibernate:hibernate-entitymanager:$hibernate"
+    compile "com.google.guava:guava:$guavaVersion"
     testCompile "junit:junit:$junitVersion"
-
 }
 
 
@@ -81,5 +73,3 @@ fatJar {
     exclude "jetty-dir.css"
     exclude "META-INF/ECLIPSEF.*"
 }
-
-
