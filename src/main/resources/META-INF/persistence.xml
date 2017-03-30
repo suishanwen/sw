@@ -15,9 +15,16 @@
         <class>com.sw.domain.entity.controller.Project</class>
         <class>com.sw.domain.entity.vote.Controller</class>
         <class>com.sw.domain.entity.util.SwSequence</class>
+        <!--auto-vote-->
+        <class>com.sw.domain.entity.autovote.TaskIndex</class>
+        <class>com.sw.domain.entity.autovote.TaskVsBackground</class>
+        <class>com.sw.domain.entity.autovote.CurrentTaskIndex</class>
+        <class>com.sw.domain.entity.autovote.TaskExecRecord</class>
+        <class>com.sw.domain.entity.autovote.TaskReward</class>
+
         <!-- 提供商——Hibernate -->
         <properties>
-            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.c3p0.max_size" value="5"/>
             <property name="hibernate.c3p0.min_size" value="1"/>

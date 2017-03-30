@@ -7,6 +7,7 @@ import com.sw.domain.util.OnException;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/vm")
@@ -98,7 +99,8 @@ public class VmResource {
     @Path("dm")
     @OnException("SwitchDmFail")
     @Produces(MediaType.APPLICATION_JSON)
-    public void switchVmDm(@QueryParam("u") String u){
+    public Response switchVmDm(@QueryParam("u") String u){
          VmFacade.switchVmDm(u);
+         return Response.ok().build();
     }
 }

@@ -18,7 +18,7 @@ buildscript {
 sourceCompatibility = 1.8
 
 group = 'com.sw'
-version = '0.1.1'
+version = '0.1.2'
 
 project.ext {
     jettyVersion = '9.0.0.M3'
