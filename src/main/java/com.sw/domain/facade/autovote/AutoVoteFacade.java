@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class AutoVoteFacade extends BaseFacade {
 
@@ -81,6 +82,20 @@ public class AutoVoteFacade extends BaseFacade {
         }
     }
 
+    public BestTask getBestTask() {
+        return get(BestTask.class, 1);
+    }
+
+    @Transactional
+    public BestTask setBestTask(String taskName, String backgroundNo, String idCate, BigDecimal price) {
+        BestTask bestTask = getBestTask();
+        if (bestTask != null) {
+            bestTask.setBestTask(taskName, backgroundNo, idCate, price, new Date());
+            return persist(bestTask);
+        } else {
+            return persist(new BestTask(1, taskName, backgroundNo, idCate, price, new Date()));
+        }
+    }
 
     @Transactional
     public CurrentTaskIndex startTask(String userId, String taskName) {

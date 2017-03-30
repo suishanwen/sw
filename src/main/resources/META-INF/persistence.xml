@@ -18,6 +18,7 @@
         <!--auto-vote-->
         <class>com.sw.domain.entity.autovote.TaskIndex</class>
         <class>com.sw.domain.entity.autovote.TaskVsBackground</class>
+        <class>com.sw.domain.entity.autovote.BestTask</class>
         <class>com.sw.domain.entity.autovote.CurrentTaskIndex</class>
         <class>com.sw.domain.entity.autovote.TaskExecRecord</class>
         <class>com.sw.domain.entity.autovote.TaskReward</class>

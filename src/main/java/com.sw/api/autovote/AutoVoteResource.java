@@ -38,6 +38,25 @@ public class AutoVoteResource {
     }
 
     @GET
+    @Path("best-task")
+    @OnException("getBestTaskFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBestTask() {
+        return Response.ok().entity(autoVoteFacade.getBestTask()).build();
+    }
+
+    @GET
+    @Path("set-best-task")
+    @OnException("setBestTaskFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response setBestTask(@QueryParam("taskName") String taskName,
+                                @QueryParam("backgroundNo") String backgroundNo,
+                                @QueryParam("idCate") String idCate,
+                                @QueryParam("price") BigDecimal price) {
+        return Response.ok().entity(autoVoteFacade.setBestTask(taskName, backgroundNo, idCate, price)).build();
+    }
+
+    @GET
     @Path("add-task-index")
     @OnException("addTaskIndexFailed")
     @Produces(MediaType.APPLICATION_JSON)

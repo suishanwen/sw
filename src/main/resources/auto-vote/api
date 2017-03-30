@@ -5,6 +5,9 @@ http://localhost:89/api/auto-vote/update-task-index?taskName=haofa17_ruw&isValid
 http://localhost:89/api/auto-vote/add-update-background?taskName=haofa17_ruw&backgroundNo=808&quantityRequire=5000000&quantityFinished=1320793&idActive=559&idTotal=2467&idAllow=0&idCate=CJR&price=0.13
 http://localhost:89/api/auto-vote/add-update-background?taskName=XFdsmnjeu834&backgroundNo=904&quantityRequire=9400000&quantityFinished=6257976&idActive=287&idTotal=3416&idAllow=0&idCate=CJR&price=0.1
 http://localhost:89/api/auto-vote/task-today
+http://localhost:89/api/auto-vote/best-task
+http://localhost:89/api/auto-vote/set-best-task?taskName=haofa17_ruw&backgroundNo=808&idCate=CJR&price=0.13
+http://localhost:89/api/auto-vote/set-best-task?taskName=XFdsmnjeu834&backgroundNo=904&idCate=CJR&price=0.1
 http://localhost:89/api/auto-vote/start-task?userId=2016003&taskName=haofa17_ruw
 http://localhost:89/api/auto-vote/start-task?userId=2016003&taskName=XFdsmnjeu834
 http://localhost:89/api/auto-vote/upload-task-reward?taskName=XFdsmnjeu834&backGroundNo=904&&userId=2016003&workId=CJR&subId=01&quantity=10
