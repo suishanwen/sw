@@ -6,7 +6,7 @@ apply plugin: 'eu.appsatori.fatjar'
 
 buildscript {
     repositories {
-        maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
+        maven { url 'http://121.42.239.141:8081/nexus/content/repositories/public' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
     }
     dependencies {
@@ -32,7 +32,7 @@ project.ext {
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
-    maven { url 'http://42.96.207.122:8081/nexus/content/repositories/public' }
+    maven { url 'http://121.42.239.141:8081/nexus/content/repositories/public' }
 }
 
 dependencies {
