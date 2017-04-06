@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.sun.jersey.api.core.PackagesResourceConfig.PROPERTY_PACKAGES;
-
 public class ResourceModule extends JerseyServletModule {
     @Override
     protected void configureServlets() {

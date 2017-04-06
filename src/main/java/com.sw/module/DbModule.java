@@ -3,7 +3,7 @@ package com.sw.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.persist.PersistFilter;
-import com.google.inject.persist.jpa.JpaPersistModule;
+import com.google.inject.persist.jpa.ReJpaPersistModule;
 import com.google.inject.servlet.ServletModule;
 
 import javax.persistence.EntityManager;
@@ -16,8 +16,8 @@ public class DbModule extends AbstractModule {
 
     public void configure() {
         bind(PersistFilter.class);
-
-        install(new JpaPersistModule("domain").properties(toProperties()));
+        final String[] autoScanPackages = new String[]{"com.sw"};
+        install(new ReJpaPersistModule("domain").properties(toProperties()).packages(autoScanPackages));
         install(new ServletModule() {
             @Override
             protected void configureServlets() {
@@ -27,7 +27,7 @@ public class DbModule extends AbstractModule {
 
     }
 
-    public Properties toProperties() {
+    private Properties toProperties() {
         Properties properties = new Properties();
         properties.put("javax.persistence.jdbc.driver", "com.mysql.jdbc.Driver");
         properties.put("javax.persistence.jdbc.url", "jdbc:mysql://127.0.0.1:3306/sw");

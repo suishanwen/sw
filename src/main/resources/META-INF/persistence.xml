@@ -5,24 +5,7 @@
      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <!-- persistence.xml需要放到Classpath下面 -->
     <persistence-unit name="domain" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-
-        <!-- 用户 -->
-        <class>com.sw.domain.entity.note.Note</class>
-        <class>com.sw.domain.entity.game.GameRecord</class>
-        <class>com.sw.domain.entity.controller.Admin</class>
-        <class>com.sw.domain.entity.controller.Vm</class>
-        <class>com.sw.domain.entity.controller.Project</class>
-        <class>com.sw.domain.entity.vote.Controller</class>
-        <class>com.sw.domain.entity.util.SwSequence</class>
-        <!--auto-vote-->
-        <class>com.sw.domain.entity.autovote.TaskIndex</class>
-        <class>com.sw.domain.entity.autovote.TaskVsBackground</class>
-        <class>com.sw.domain.entity.autovote.BestTask</class>
-        <class>com.sw.domain.entity.autovote.CurrentTaskIndex</class>
-        <class>com.sw.domain.entity.autovote.TaskExecRecord</class>
-        <class>com.sw.domain.entity.autovote.TaskReward</class>
-
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- 提供商——Hibernate -->
         <properties>
             <property name="hibernate.show_sql" value="true"/>
