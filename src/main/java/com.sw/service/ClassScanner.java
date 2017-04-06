@@ -2,7 +2,7 @@ package com.sw.service;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
-import jdk.internal.org.objectweb.asm.*;
+import org.ow2.asm.*;
 import org.glassfish.jersey.server.ResourceFinder;
 import org.glassfish.jersey.server.internal.LocalizationMessages;
 import org.glassfish.jersey.server.internal.scanning.FilesScanner;
