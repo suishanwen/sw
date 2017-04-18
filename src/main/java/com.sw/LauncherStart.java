@@ -1,7 +1,6 @@
 package com.sw;
 
 import com.sw.module.InvalidRequestServlet;
-import com.sw.module.ResourceModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -21,13 +20,13 @@ import java.util.EnumSet;
 public class LauncherStart {
     @Inject
     public static void main(String[] args) throws Exception {
+        ResourceModule resourceModule = new ResourceModule();
         Injector injector = Guice.createInjector(new AbstractModule() {
             @Override
             protected void configure() {
-                install(new ResourceModule());
+                install(resourceModule);
             }
         });
-
         Server server = new Server(89);
 
         ServletContextHandler servletHandler = new ServletContextHandler();

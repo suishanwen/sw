@@ -23,10 +23,10 @@ version = '0.1.3'
 project.ext {
     jettyVersion = '9.0.0.M3'
     jerseyVersion = '1.17.1'
-    jacksonVersion = '2.1.1'
-    guavaVersion = '13.0.1'
+    jacksonVersion = '2.6.1'
+    guavaVersion = '19.0-rc1'
     guiceVersion = '4.0'
-    hibernate = '4.3.0.Final'
+    hibernate = '5.0.1.Final'
     junitVersion = '4.11'
     jersey2Version = '2.17'
     hibernateJpa = '1.0.0.Final'
@@ -51,7 +51,7 @@ dependencies {
     compile "com.sun.jersey.contribs:jersey-guice:$jerseyVersion"
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
-    compile "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.6.1"
+    compile "com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:$jacksonVersion"
     runtime "com.fasterxml.jackson.datatype:jackson-datatype-guava:$jacksonVersion"
     compile "com.google.inject:guice:$guiceVersion"
     compile "com.google.inject.extensions:guice-assistedinject:$guiceVersion"
@@ -61,6 +61,8 @@ dependencies {
     compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
     compile "org.hibernate:hibernate-entitymanager:$hibernate"
     compile "com.google.guava:guava:$guavaVersion"
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.12'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.9-RC1'
     testCompile "junit:junit:$junitVersion"
 }
 
