@@ -8,10 +8,7 @@ import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import com.sw.service.Application;
 import com.sw.service.jersey.RestApi;
-import com.sw.service.jpa.ApplicationModule;
-import com.sw.service.jpa.Configuration;
-import com.sw.service.jpa.JpaConfiguration;
-import com.sw.service.jpa.JpaPersist;
+import com.sw.service.jpa.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +22,7 @@ import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkState;
 import static com.sun.jersey.api.core.PackagesResourceConfig.PROPERTY_PACKAGES;
+import static com.sw.service.jpa.Configuration.config;
 
 @Application(value = "sw")
 @RestApi
@@ -51,6 +49,9 @@ public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
+        if (jpaConfiguration == null) {
+            jpaConfiguration = defaultConfiguration();
+        }
         return jpaConfiguration;
     }
 
@@ -72,7 +73,14 @@ public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
         return jpaConfiguration;
     }
 
+    private static JpaConfiguration defaultConfiguration() {
+        if (logger.isInfoEnabled())
+            logger.info("No configuration found, will use default configuration.");
 
+        return new JpaConfiguration(config().http().port(8051).end().build(),
+                DatabaseConfiguration.database().user("root").password("").driver("com.mysql.jdbc.Driver")
+                        .url("jdbc:mysql://127.0.0.1:3306/sw").build());
+    }
 //    @Override
 //    protected void configureServlets() {
 //

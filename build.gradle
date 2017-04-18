@@ -18,7 +18,7 @@ buildscript {
 sourceCompatibility = 1.8
 
 group = 'com.sw'
-version = '0.1.3'
+version = '0.1.4'
 
 project.ext {
     jettyVersion = '9.0.0.M3'
@@ -61,7 +61,8 @@ dependencies {
     compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
     compile "org.hibernate:hibernate-entitymanager:$hibernate"
     compile "com.google.guava:guava:$guavaVersion"
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.12'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.21'
     compile group: 'org.reflections', name: 'reflections', version: '0.9.9-RC1'
     testCompile "junit:junit:$junitVersion"
 }
