@@ -32,10 +32,9 @@ public class JerseyEnabler implements BindingProvider<RestApi, Configuration> {
 
             @Override
             protected void configureServlets() {
-                bind(GuiceContainer.class);
+//                bind(GuiceContainer.class);
 //                binder().requireExplicitBindings();
-                bind(GuiceFilter.class);
-                bind(CorsFilter.class).in(Singleton.class);
+//                bind(GuiceFilter.class);
                 ImmutableSet<String> packageSet = ImmutableSet.<String>builder()
                         .add(annotation.packages().length == 0 ? autoScanPackages : annotation.packages()).build();
 
@@ -58,7 +57,7 @@ public class JerseyEnabler implements BindingProvider<RestApi, Configuration> {
 //                serve(annotation.prefix()).with(servletContainer, new ImmutableMap.Builder<String, String>()
 //                        .put(ServerProperties.PROVIDER_PACKAGES, on(",").skipNulls().join(packageSet)).build());
                 //                serve(annotation.prefix()).with(Application.class);
-
+                bind(CorsFilter.class).in(Singleton.class);
                 Map<String, String> params = new HashMap<>();
                 params.put(PROPERTY_PACKAGES, "com.sw.api.*");
                 filter("/api/*").through(CorsFilter.class);
