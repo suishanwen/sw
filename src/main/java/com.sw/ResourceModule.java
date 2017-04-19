@@ -1,27 +1,15 @@
 package com.sw;
 
-
-import com.google.inject.Singleton;
-import com.google.inject.servlet.GuiceFilter;
-import com.google.inject.servlet.ServletModule;
-import com.sun.jersey.guice.JerseyServletModule;
-import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import com.sw.service.Application;
 import com.sw.service.jersey.RestApi;
 import com.sw.service.jpa.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-import static com.google.common.base.Preconditions.checkState;
-import static com.sun.jersey.api.core.PackagesResourceConfig.PROPERTY_PACKAGES;
 import static com.sw.service.jpa.Configuration.config;
 
 @Application(value = "sw")

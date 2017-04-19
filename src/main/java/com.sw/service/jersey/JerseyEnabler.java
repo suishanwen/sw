@@ -1,17 +1,13 @@
 package com.sw.service.jersey;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Binder;
 import com.google.inject.Singleton;
-import com.google.inject.servlet.GuiceFilter;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import com.sw.CorsFilter;
-import com.sw.service.Application;
 import com.sw.service.jpa.ApplicationModule;
 import com.sw.service.jpa.BindingProvider;
 import com.sw.service.jpa.Configuration;
-import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import org.reflections.Reflections;
 
@@ -19,9 +15,6 @@ import javax.ws.rs.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import static com.google.common.base.Joiner.on;
-import static com.sun.jersey.api.core.PackagesResourceConfig.PROPERTY_PACKAGES;
 
 public class JerseyEnabler implements BindingProvider<RestApi, Configuration> {
 
@@ -49,17 +42,16 @@ public class JerseyEnabler implements BindingProvider<RestApi, Configuration> {
                         }
                     }
                 }
-
+                bind(CorsFilter.class).in(Singleton.class);
 //                bind(ResourceConfig.class).toInstance(new MyApplication(on(",").skipNulls().join(packageSet), org.glassfish.jersey.jackson.JacksonFeature.class));
-//                I0ResourceConfig i0ResourceConfig = new I0ResourceConfig(on(",").skipNulls().join(packageSet));
+//                JerseyResourceConfig i0ResourceConfig = new JerseyResourceConfig(on(",").skipNulls().join(packageSet));
 //                bind(ResourceConfig.class).toInstance(i0ResourceConfig);
 //                ServletContainer servletContainer = new ServletContainer(i0ResourceConfig);
 //                serve(annotation.prefix()).with(servletContainer, new ImmutableMap.Builder<String, String>()
 //                        .put(ServerProperties.PROVIDER_PACKAGES, on(",").skipNulls().join(packageSet)).build());
-                //                serve(annotation.prefix()).with(Application.class);
-                bind(CorsFilter.class).in(Singleton.class);
+//                serve(annotation.prefix()).with(Application.class);
                 Map<String, String> params = new HashMap<>();
-                params.put(PROPERTY_PACKAGES, "com.sw.api.*");
+                params.put(ServerProperties.PROVIDER_PACKAGES, "com.sw.api.*");
                 filter("/api/*").through(CorsFilter.class);
                 serve("/api/*").with(GuiceContainer.class, params);
             }
