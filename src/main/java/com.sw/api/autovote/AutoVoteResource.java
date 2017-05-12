@@ -31,10 +31,18 @@ public class AutoVoteResource {
 
     @GET
     @Path("task-today")
-    @OnException("getAllTaskTodayFailed")
+    @OnException("getTaskTodayFailed")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTaskToday() {
         return Response.ok().entity(autoVoteFacade.getTaskInfoToday()).build();
+    }
+
+    @GET
+    @Path("is-task-valid")
+    @OnException("checkIsTaskValidFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response isValidTask(@QueryParam("taskName") String taskName, @QueryParam("downloadAddress") String downloadAddress) {
+        return Response.ok().entity(autoVoteFacade.isValidTask(taskName, downloadAddress)).build();
     }
 
     @GET

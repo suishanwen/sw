@@ -45,6 +45,14 @@ public class AutoVoteFacade extends BaseFacade {
         return find(TaskVO.class, sql, Collections.singletonList(today));
     }
 
+    public boolean isValidTask(String taskName, String downloadAddress) {
+        TaskIndex taskIndex = get(TaskIndex.class, taskName);
+        if (taskIndex == null) {
+            taskIndex = addTaskIndex(taskName, 1, 1, downloadAddress);
+        }
+        return  taskIndex.getIsValid() == 1;
+    }
+
     @Transactional
     public TaskIndex addTaskIndex(String taskName, int taskCate, int ipType, String downloadAddress) {
         return persist(new TaskIndex(taskName, taskCate, ipType, downloadAddress, 1));
@@ -113,7 +121,7 @@ public class AutoVoteFacade extends BaseFacade {
     }
 
     @Transactional
-    public Boolean uploadTaskReward(String taskName, String backGroundNo, String userId, String workId, String subId, int quantity) {
+    public boolean uploadTaskReward(String taskName, String backGroundNo, String userId, String workId, String subId, int quantity) {
         TaskRewardPK taskExecRecordPK = new TaskRewardPK(taskName, backGroundNo, userId, workId, subId);
         TaskReward taskReward = get(TaskReward.class, taskExecRecordPK);
         Date now = new Date();
