@@ -1,0 +1,12 @@
+database:
+    driver: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/sw
+    user: root
+    password:
+    properties:
+        hibernate.c3p0.max_size: 5
+        hibernate.c3p0.min_size: 1
+        hibernate.c3p0.timeout: 600
+        hibernate.c3p0.max_statements: 100
+        hibernate.c3p0.acquire_increment: 5
+        hibernate.c3p0.idle_test_period: 60
