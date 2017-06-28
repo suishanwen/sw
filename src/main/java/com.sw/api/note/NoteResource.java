@@ -39,7 +39,7 @@ public class NoteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Note edit(Note note, @Context HttpServletRequest request) {
         String ip = getIpAddr(request);
-        if (ip != null && !ip.equals("106.38.88.98")) {
+        if (ip != null && !ip.contains("106.38.88")) {
             if (note.getIp() != null && !ip.equals(note.getIp())) {
                 return null;
             }
