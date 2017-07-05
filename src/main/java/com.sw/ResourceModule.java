@@ -66,41 +66,7 @@ public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
             logger.info("No configuration found, will use default configuration.");
 
         return new JpaConfiguration(config().http().port(8051).end().build(),
-                DatabaseConfiguration.database().user("root").password("").driver("com.mysql.jdbc.Driver")
+                DatabaseConfiguration.database().user("root").password("root").driver("com.mysql.jdbc.Driver")
                         .url("jdbc:mysql://127.0.0.1:3306/sw").build());
     }
-//    @Override
-//    protected void configureServlets() {
-//
-//        bind(GuiceContainer.class);
-//        binder().requireExplicitBindings();
-//        bind(GuiceFilter.class);
-//
-////        bind Facade
-//        bind(SequenceFacade.class);
-//        bind(NoteFacade.class);
-//        bind(GameRecordFacade.class);
-//        bind(AdminFacade.class);
-//        bind(VmFacade.class);
-//        bind(ProjectFacade.class);
-//        bind(ControllerFacade.class);
-//        bind(AutoVoteFacade.class);
-//
-//        install(new DbModule());
-//
-////        bind Resource
-//        bind(NoteResource.class);
-//        bind(GameRecordResource.class);
-//        bind(AdminResource.class);
-//        bind(VmResource.class);
-//        bind(ProjectResource.class);
-//        bind(ControllerResource.class);
-//        bind(AutoVoteResource.class);
-//
-//        bind(CorsFilter.class).in(Singleton.class);
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put(PROPERTY_PACKAGES, "com.sw.api.*");
-//        filter("/api/*").through(CorsFilter.class);
-//        serve("/api/*").with(GuiceContainer.class, params);
-//    }
 }
