@@ -27,7 +27,7 @@ public class LauncherStart {
                 install(resourceModule);
             }
         });
-        Server server = new Server(9999);
+        Server server = new Server(89);
 
         ServletContextHandler servletHandler = new ServletContextHandler();
         servletHandler.setContextPath("/");
