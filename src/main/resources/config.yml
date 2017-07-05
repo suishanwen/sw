@@ -2,7 +2,7 @@ database:
     driver: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/sw
     user: root
-    password:
+    password: root
     properties:
         hibernate.c3p0.max_size: 5
         hibernate.c3p0.min_size: 1
