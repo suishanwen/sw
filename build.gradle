@@ -87,7 +87,7 @@ task myBuild(dependsOn: ['fatJar', 'webappBuild']) {
 fatJar {
     baseName = 'sw'
     manifest {
-        attributes 'Main-Class': 'com.sw.LauncherStart'
+        attributes 'Main-Class': 'com.sw.LauncherStartClass'
     }
     exclude 'META-INF/MANIFEST.MF', '**/*.RSA', '**/*.SF', '**/*.DSA'
     exclude "about_files/*"
