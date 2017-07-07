@@ -69,8 +69,21 @@ dependencies {
     compile group: 'org.jvnet.mimepull', name: 'mimepull', version: '1.9.3'
     testCompile "junit:junit:$junitVersion"
 }
+sourceSets {
+    main {
+        resources {
+            srcDirs += 'src/main/webapp'
+        }
+    }
+}
+task webappBuild(type: Zip) {
+    baseName = 'webapp'
+    from 'src/main/webapp'
+}
 
+task myBuild(dependsOn: ['fatJar', 'webappBuild']) {
 
+}
 fatJar {
     baseName = 'sw'
     manifest {
