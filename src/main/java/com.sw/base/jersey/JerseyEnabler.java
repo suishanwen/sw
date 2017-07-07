@@ -9,6 +9,7 @@ import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import com.sw.base.ApplicationModule;
 import com.sw.base.BindingProvider;
 import com.sw.base.config.Configuration;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 
 import javax.inject.Singleton;
@@ -25,6 +26,7 @@ public class JerseyEnabler implements BindingProvider<RestApi, Configuration> {
             @Override
             protected void configureServlets() {
                 bind(JacksonJaxbJsonProvider.class).in(Singleton.class);
+                bind(MultiPartFeature.class).in(Singleton.class);
                 ImmutableSet<String> packageSet = ImmutableSet.<String>builder()
                         .add(annotation.packages().length == 0 ? autoScanPackages : annotation.packages()).build();
                 serve(annotation.prefix()).with(GuiceContainer.class, new ImmutableMap.Builder<String, String>()

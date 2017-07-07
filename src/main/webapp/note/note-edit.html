@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body ng-controller="NoteEditController">
+<div class="note-edit-index">
+    <div>
+        <span class="note-subject badge">{{selectedNote.id?"编辑主题":"新主题"}}</span>
+    </div>
+    <form name="noteForm" class="form-horizontal">
+        <div class="note-info">
+            <div>
+                <label for="title">标题<input id="title" self-width="500" type="text" ng-model="selectedNote.title"
+                                            autofocus required/></label>
+            </div>
+            <div>
+                <label for="poster">发布者<input id="poster"  class="poster" type="text" ng-model="selectedNote.poster"
+                                              required/></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea name="content" id="content"  cols="80" rows="16"  class="content" ng-model="selectedNote.content" ng-click="newEditor()"
+                      required></textarea>
+        </div>
+        <div class="form-group note-info">
+            <span ng-show="selectedNote.postTime">发布时间:{{selectedNote.postTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            <span ng-show="selectedNote.editTime">最后编辑时间:{{selectedNote.editTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="form-group operate">
+            <button class="btn btn-default" ng-click="backNote()">返回</button>
+            <button class="btn btn-primary" ng-disabled="noteForm.$invalid" ng-click="saveNote()">提交</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body ng-controller="UploadController">
+<div class="upload-main">
+    <div class="file-input" file-input="file" on-change="readFile()" file-accept="*"></div>
+    <input type="button" value="上传" ng-click="upload()"/>
+</div>
+</body>
+</html>
