@@ -19,12 +19,18 @@ import java.net.URL;
 
 import static com.sw.base.config.Configuration.config;
 
-@Application(value = "sw")
+@Application("sw")
 @GuiceModule
 @Servlet3
 @RestApi
 @JpaPersist(unit = "domain")
-@EmbeddedGrizzly
+@EmbeddedGrizzly(assets =
+        {@EmbeddedGrizzly.Asset(uri = "/note", resource = "note"),
+                @EmbeddedGrizzly.Asset(uri = "/file", resource = "file"),
+
+
+        }
+)
 public class ResourceModule extends ApplicationModule<JpaConfiguration> {
     private static final String DEFAULT_CONFIG_FOLDER = "./";
     private static final String DEFAULT_YML_FILENAME = "config.yml";
