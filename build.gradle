@@ -23,7 +23,7 @@ version = '0.1.6'
 project.ext {
     jettyVersion = '9.0.0.M3'
     jerseyVersion = '2.17'
-    jerseyGuice = '1.19.4'
+//    jerseyGuice = '1.19.4'
     jacksonVersion = '2.1.1'
     guavaVersion = '19.0-rc1'
     guiceVersion = '4.0'
@@ -44,12 +44,11 @@ dependencies {
     compile "org.glassfish.jersey.core:jersey-server:$jerseyVersion"
     compile "org.glassfish.jersey.media:jersey-media-multipart:$jerseyVersion"
     compile "org.glassfish.jersey.containers:jersey-container-grizzly2-servlet:$jerseyVersion"
-//    compile "com.sun.jersey.contribs:jersey-guice:$jerseyGuice"
     compile group: 'com.squarespace.jersey2-guice', name: 'jersey2-guice-impl', version: '1.0.6'
+//    compile "com.sun.jersey.contribs:jersey-guice:$jerseyGuice"
 
-    compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa"
-    compile "org.eclipse.jetty:jetty-server:$jettyVersion"
-    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+//    compile "org.eclipse.jetty:jetty-server:$jettyVersion"
+//    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
 
     compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion"
@@ -62,13 +61,14 @@ dependencies {
     compile "com.google.inject.extensions:guice-throwingproviders:$guiceVersion"
     compile "com.google.inject.extensions:guice-multibindings:$guiceVersion"
     compile "org.hibernate:hibernate-entitymanager:$hibernate"
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa"
+
     compile "com.google.guava:guava:$guavaVersion"
     compile group: 'org.reflections', name: 'reflections', version: '0.9.9-RC1'
     compile group: 'org.ow2.asm', name: 'asm', version: '5.0.4'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
-    compile group: 'org.jvnet.mimepull', name: 'mimepull', version: '1.9.3'
     testCompile "junit:junit:$junitVersion"
 }
 sourceSets {
