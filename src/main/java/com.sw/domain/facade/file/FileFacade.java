@@ -14,9 +14,8 @@ public class FileFacade {
 
     public void uploadFile(FormDataMultiPart multiPart) {
         FormDataBodyPart file = multiPart.getField("file");
-        String fileName = multiPart.getField("fileName").getValue();
         InputStream ins = file.getValueAs(InputStream.class);
-        File f = new File(path + fileName);
+        File f = new File(path + file.getName());
         try {
             OutputStream os = new FileOutputStream(f);
             int bytesRead = 0;
