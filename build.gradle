@@ -44,7 +44,8 @@ dependencies {
     compile "org.glassfish.jersey.core:jersey-server:$jerseyVersion"
     compile "org.glassfish.jersey.media:jersey-media-multipart:$jerseyVersion"
     compile "org.glassfish.jersey.containers:jersey-container-grizzly2-servlet:$jerseyVersion"
-    compile "com.sun.jersey.contribs:jersey-guice:$jerseyGuice"
+//    compile "com.sun.jersey.contribs:jersey-guice:$jerseyGuice"
+    compile group: 'com.squarespace.jersey2-guice', name: 'jersey2-guice-impl', version: '1.0.6'
 
     compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJpa"
     compile "org.eclipse.jetty:jetty-server:$jettyVersion"

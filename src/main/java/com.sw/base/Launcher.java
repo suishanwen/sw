@@ -5,6 +5,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
+import com.squarespace.jersey2.guice.JerseyGuiceModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,7 +68,8 @@ public class Launcher {
                 ((StartupTasks) enabler.getValue()).perform(enabler.getKey(), configuration);
 
         ServletContainer container = createServletContainer(module, configuration);
-        container.addServletContext(module.path(), true, module);
+        container.addServletContext(module.path(), true, module,
+                new JerseyGuiceModule("__HK2_Generated_0"));
 
         for (Map.Entry<Annotation, FacetEnabler> enabler : module.enablers().entrySet())
             if (enabler.getValue() instanceof ContainerConfigurator)
