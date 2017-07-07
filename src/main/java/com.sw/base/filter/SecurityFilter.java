@@ -1,6 +1,6 @@
 package com.sw.base.filter;
 
-import org.kopitubruk.util.json.JSONUtil;
+import com.sw.base.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,7 +82,7 @@ public class SecurityFilter implements Filter {
             httpServletResponse.setStatus(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
             httpServletResponse.setContentType(MediaType.APPLICATION_JSON);
             try {
-                httpServletResponse.getWriter().print(JSONUtil.toJSON(e.getMessage()));
+                httpServletResponse.getWriter().print(JsonUtils.toJson(e.getMessage()));
             } catch (IOException e1) {
                 logger.warn(e1.getMessage(), e1);
                 httpServletResponse.setStatus(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode());
