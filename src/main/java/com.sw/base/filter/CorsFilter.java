@@ -1,11 +1,15 @@
-package com.sw;
+package com.sw.base.filter;
+
+import com.google.inject.Singleton;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@Singleton
+@WebFilter("/api/*")
 public class CorsFilter implements Filter {
 
     @Override
