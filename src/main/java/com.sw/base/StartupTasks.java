@@ -1,4 +1,4 @@
-package com.sw.service;
+package com.sw.base;
 
 import java.lang.annotation.Annotation;
 

@@ -1,13 +1,15 @@
-package com.sw.service.jersey;
+package com.sw.base.jersey;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Binder;
 import com.google.inject.Singleton;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import com.sw.CorsFilter;
-import com.sw.service.jpa.ApplicationModule;
-import com.sw.service.jpa.BindingProvider;
-import com.sw.service.jpa.Configuration;
+import com.sw.base.ApplicationModule;
+import com.sw.base.BindingProvider;
+import com.sw.base.config.Configuration;
+import com.sw.base.jersey.AutoScanningServletModule;
+import com.sw.base.jersey.RestApi;
 import org.glassfish.jersey.server.ServerProperties;
 import org.reflections.Reflections;
 

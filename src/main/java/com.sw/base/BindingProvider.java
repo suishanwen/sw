@@ -1,7 +1,6 @@
-package com.sw.service.jpa;
+package com.sw.base;
 
 import com.google.inject.Binder;
-import com.sw.service.FacetEnabler;
 
 import java.lang.annotation.Annotation;
 

@@ -1,5 +1,8 @@
-package com.sw.service.jpa;
+package com.sw.base.jpa;
 
+
+import com.sw.base.config.Configuration;
+import com.sw.base.config.DatabaseConfiguration;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;

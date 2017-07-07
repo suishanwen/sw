@@ -1,4 +1,4 @@
-package com.sw.service.jpa;
+package com.sw.base.jpa;
 
 import com.google.inject.persist.PersistService;
 

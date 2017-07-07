@@ -1,4 +1,4 @@
-package com.sw.service.jpa.util;
+package com.sw.base.jpa.util;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

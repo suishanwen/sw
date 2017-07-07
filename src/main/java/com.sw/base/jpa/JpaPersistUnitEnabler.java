@@ -1,13 +1,15 @@
-package com.sw.service.jpa;
+package com.sw.base.jpa;
 
 import com.google.inject.Binder;
 import com.google.inject.persist.PersistFilter;
 import com.google.inject.persist.jpa.ReJpaPersistModule;
 import com.google.inject.servlet.ServletModule;
+import com.sw.base.ApplicationModule;
+import com.sw.base.BindingProvider;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-public class JpaPersistUnitEnabler implements  BindingProvider<JpaPersist, WithDatabase> {
+public class JpaPersistUnitEnabler implements BindingProvider<JpaPersist, WithDatabase> {
 
     @Override
     public void configure(Binder binder, JpaPersist annotation, ApplicationModule<?> module, WithDatabase configuration) {

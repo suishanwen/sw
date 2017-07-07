@@ -1,7 +1,9 @@
-package com.sw.service.jpa;
+package com.sw.base.config;
 
 import com.google.common.base.Optional;
-import com.sw.service.jpa.util.Duration;
+import com.sw.base.jpa.Builder;
+import com.sw.base.jpa.OptionalBuilder;
+import com.sw.base.jpa.util.Duration;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

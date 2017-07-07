@@ -1,4 +1,4 @@
-package com.sw.service;
+package com.sw.base;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,5 +7,8 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Stack {
+public @interface Facet {
+    Class<? extends FacetEnabler> value();
+
+    int order() default 0;
 }

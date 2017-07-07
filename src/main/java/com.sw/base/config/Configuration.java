@@ -1,4 +1,4 @@
-package com.sw.service.jpa;
+package com.sw.base.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,9 +7,10 @@ import com.fasterxml.jackson.databind.introspect.AnnotationIntrospectorPair;
 import com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-//import com.fasterxml.jackson.datatype.guava.GuavaModule;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import com.google.common.collect.ImmutableMap;
+import com.sw.base.jpa.Builder;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
@@ -35,7 +36,7 @@ public class Configuration {
 
     private static ObjectMapper getMapper() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-//        mapper.registerModule(new GuavaModule());
+        mapper.registerModule(new GuavaModule());
         mapper.setAnnotationIntrospector(new AnnotationIntrospectorPair(new JaxbAnnotationIntrospector(TypeFactory.defaultInstance()), new JacksonAnnotationIntrospector()));
         mapper.setPropertyNamingStrategy(new PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy());
         return mapper;

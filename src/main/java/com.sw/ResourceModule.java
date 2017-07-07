@@ -1,25 +1,36 @@
 package com.sw;
 
-import com.sw.service.Application;
-import com.sw.service.jersey.RestApi;
-import com.sw.service.jpa.*;
+import com.sw.base.Application;
+import com.sw.base.ApplicationModule;
+import com.sw.base.GuiceModule;
+import com.sw.base.Servlet3;
+import com.sw.base.config.Configuration;
+import com.sw.base.config.DatabaseConfiguration;
+import com.sw.base.grizzly.EmbeddedGrizzly;
+import com.sw.base.jersey.RestApi;
+import com.sw.base.jpa.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
-import static com.sw.service.jpa.Configuration.config;
+import static com.sw.base.config.Configuration.config;
 
 @Application(value = "sw")
+@GuiceModule
+@Servlet3
 @RestApi
 @JpaPersist(unit = "domain")
-public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
+@EmbeddedGrizzly
+public class ResourceModule extends ApplicationModule<JpaConfiguration> {
     private static final String DEFAULT_CONFIG_FOLDER = "./";
     private static final String DEFAULT_YML_FILENAME = "config.yml";
     private static Logger logger = LoggerFactory.getLogger(ResourceModule.class);
     private static JpaConfiguration jpaConfiguration;
+
     public ResourceModule() {
         super();
     }
@@ -47,9 +58,7 @@ public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
         JpaConfiguration jpaConfiguration = null;
         try {
             File file = new File(path);
-            if (logger.isInfoEnabled()) {
-                logger.info("Reading configuration from file {}", file.getCanonicalPath());
-            }
+            logger.info("Reading configuration from file {}", file.getCanonicalPath());
             if (file.exists()) {
                 jpaConfiguration = Configuration.read(new FileInputStream(file), JpaConfiguration.class);
             } else {
@@ -62,8 +71,7 @@ public  class ResourceModule extends ApplicationModule<JpaConfiguration>  {
     }
 
     private static JpaConfiguration defaultConfiguration() {
-        if (logger.isInfoEnabled())
-            logger.info("No configuration found, will use default configuration.");
+        logger.info("No configuration found, will use default configuration.");
 
         return new JpaConfiguration(config().http().port(8051).end().build(),
                 DatabaseConfiguration.database().user("root").password("root").driver("com.mysql.jdbc.Driver")

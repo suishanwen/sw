@@ -1,4 +1,4 @@
-package com.sw.service.jpa;
+package com.sw.base.jpa;
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;

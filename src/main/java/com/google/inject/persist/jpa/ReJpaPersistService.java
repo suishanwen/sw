@@ -23,7 +23,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.persist.PersistService;
 import com.google.inject.persist.UnitOfWork;
-import com.sw.service.ClassScanner;
+import com.sw.base.util.ClassScanner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,7 +31,7 @@ import java.lang.annotation.*;
 import java.util.Map;
 import java.util.Set;
 
-import static com.sw.service.TypePredicates.isEntity;
+import static com.sw.base.util.TypePredicates.isEntity;
 
 
 /**
@@ -102,7 +102,7 @@ class ReJpaPersistService implements Provider<EntityManager>, UnitOfWork, Persis
   }
 
   public synchronized void start() {
-    Preconditions.checkState(null == emFactory, "RePersistence service was already initialized.");
+    Preconditions.checkState(null == emFactory, "RePersistence base was already initialized.");
 
     ReMutablePersistenceUnitInfo persistenceUnitInfo = new ReMutablePersistenceUnitInfo();
     persistenceUnitInfo.setPersistenceUnitName(persistenceUnitName);
@@ -117,7 +117,7 @@ class ReJpaPersistService implements Provider<EntityManager>, UnitOfWork, Persis
   }
 
   public synchronized void stop() {
-    Preconditions.checkState(emFactory.isOpen(), "RePersistence service was already shut down.");
+    Preconditions.checkState(emFactory.isOpen(), "RePersistence base was already shut down.");
     emFactory.close();
   }
 

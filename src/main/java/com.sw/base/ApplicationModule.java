@@ -1,4 +1,4 @@
-package com.sw.service.jpa;
+package com.sw.base;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
@@ -6,9 +6,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMultiset;
 import com.google.inject.AbstractModule;
-import com.sw.service.Application;
-import com.sw.service.Facet;
-import com.sw.service.FacetEnabler;
+import com.sw.base.config.Configuration;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -23,8 +21,8 @@ import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.collect.ImmutableSet.copyOf;
 import static com.google.common.collect.Iterables.filter;
 import static com.google.common.collect.Iterables.find;
-import static com.sw.service.TypePredicates.*;
-import static com.sw.service.jpa.Configuration.config;
+import static com.sw.base.util.TypePredicates.*;
+import static com.sw.base.config.Configuration.config;
 
 public abstract class ApplicationModule<T extends Configuration> extends AbstractModule {
     public static final Comparator<Annotation> FACET_COMPARATOR = new Comparator<Annotation>() {

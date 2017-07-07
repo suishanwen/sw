@@ -1,6 +1,6 @@
-package com.sw.service.jersey;
+package com.sw.base.jpa;
 
-import com.sw.service.Facet;
+import com.sw.base.Facet;
 
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -13,9 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Inherited
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Facet(JerseyEnabler.class)
-public @interface RestApi {
-    String prefix() default "/api/*";
-
-    String[] packages() default {};
+@Facet(value = JpaPersistUnitEnabler.class, order = -1)
+public @interface JpaPersist {
+    String unit();
 }

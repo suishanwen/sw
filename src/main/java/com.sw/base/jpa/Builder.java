@@ -1,4 +1,4 @@
-package com.sw.service.jpa;
+package com.sw.base.jpa;
 
 public interface Builder<T> {
     T build();

@@ -1,7 +1,11 @@
-package com.sw.service;
+package com.sw.base.util;
 
 import com.google.common.base.Predicate;
 import com.google.inject.Module;
+import com.sw.base.Application;
+import com.sw.base.Facet;
+import com.sw.base.Stack;
+import com.sw.base.ApplicationModule;
 
 
 import javax.annotation.Nullable;
@@ -87,11 +91,11 @@ public class TypePredicates {
 
     public static final Predicate<Class<?>> isEntity = and(isPresent(Entity.class));
 
-//    public static final Predicate<Class<?>> isModule = and(subClassOf(Module.class), not(subClassOf(ApplicationModule.class)),
-//            not(isAbstract), defaultConstructor);
+    public static final Predicate<Class<?>> isModule = and(subClassOf(Module.class), not(subClassOf(ApplicationModule.class)),
+            not(isAbstract), defaultConstructor);
 
-//    public static final Predicate<Class<?>> isApplicationModule =
-//            and(not(isAbstract), subClassOf(ApplicationModule.class), defaultConstructor);
+    public static final Predicate<Class<?>> isApplicationModule =
+            and(not(isAbstract), subClassOf(ApplicationModule.class), defaultConstructor);
 
     public static final Predicate<Class<?>> moduleName(final String name) {
         return new Predicate<Class<?>>() {

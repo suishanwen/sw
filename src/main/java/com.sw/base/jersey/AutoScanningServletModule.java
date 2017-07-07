@@ -1,12 +1,12 @@
-package com.sw.service.jersey;
+package com.sw.base.jersey;
 
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.servlet.ServletModule;
-import com.sw.service.ClassScanner;
-import com.sw.service.ServletAnnotations;
-import com.sw.service.jpa.ApplicationModule;
+import com.sw.base.util.ClassScanner;
+import com.sw.base.util.ServletAnnotations;
+import com.sw.base.ApplicationModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +21,9 @@ import java.util.Set;
 import static com.google.common.base.Joiner.on;
 import static com.google.common.collect.Iterables.toArray;
 import static com.google.common.collect.Iterables.transform;
-import static com.sw.service.ServletAnnotations.LOG_FORMATTER;
-import static com.sw.service.TypePredicates.isFilter;
-import static com.sw.service.TypePredicates.isHttpServlet;
+import static com.sw.base.util.ServletAnnotations.LOG_FORMATTER;
+import static com.sw.base.util.TypePredicates.isFilter;
+import static com.sw.base.util.TypePredicates.isHttpServlet;
 
 public class AutoScanningServletModule extends ServletModule {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationModule.class);
@@ -37,8 +37,7 @@ public class AutoScanningServletModule extends ServletModule {
 
     @Override
     protected void configureServlets() {
-        if (logger.isInfoEnabled())
-            logger.info("Scanning for servlet and filter classes in packages:\n  {}", on("\n  ").join(packages));
+        logger.info("Scanning for servlet and filter classes in packages:\n  {}", on("\n  ").join(packages));
 
         scanHttpServletClasses();
         scanFilterClasses();
@@ -59,9 +58,8 @@ public class AutoScanningServletModule extends ServletModule {
     }
 
     private void logFound(String type, Set<Class<?>> found, Function<Class<?>, String> formatter) {
-        if (logger.isInfoEnabled())
-            logger.info(found.isEmpty() ? ("No " + type.toLowerCase() + " classes found") : (type + " classes found:\n  {}"),
-                    on("\n  ").join(formatter != null ? transform(found, formatter) : found));
+        logger.info(found.isEmpty() ? ("No " + type.toLowerCase() + " classes found") : (type + " classes found:\n  {}"),
+                on("\n  ").join(formatter != null ? transform(found, formatter) : found));
     }
 
 

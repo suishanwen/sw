@@ -1,6 +1,7 @@
-package com.sw.service.jpa;
+package com.sw.base.config;
 
 import com.google.common.collect.ImmutableMap;
+import com.sw.base.jpa.Builder;
 
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlElement;
