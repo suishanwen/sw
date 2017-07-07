@@ -24,7 +24,7 @@ public class FileResource {
     @Path("upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @OnException("uploadFileFailed")
-    public Response upload(FormDataMultiPart multiPart) {
+    public Response upload(FormDataMultiPart multiPart) throws Exception{
         fileFacade.uploadFile(multiPart);
         return Response.ok().build();
     }

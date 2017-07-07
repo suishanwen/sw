@@ -16,7 +16,7 @@ var UploadController = function ($scope, $http, progress, noteService) {
             }
             $http.post(noteService.server+"api/file/upload", fd, {
                 transformRequest: angular.identity,
-                headers: {'Content-Type': "multipart/form-data"}
+                headers: {'Content-Type': undefined}
             }).success(function (data, status) {
                 notify("系统提示", "上传成功！");
                 progress.close();

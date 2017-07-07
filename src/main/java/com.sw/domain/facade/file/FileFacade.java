@@ -12,21 +12,17 @@ import java.io.OutputStream;
 public class FileFacade {
     public static final String path = "/etc/nginx/html/file/";
 
-    public void uploadFile(FormDataMultiPart multiPart) {
+    public void uploadFile(FormDataMultiPart multiPart) throws Exception {
         FormDataBodyPart file = multiPart.getField("file");
         InputStream ins = file.getValueAs(InputStream.class);
-        File f = new File(path + file.getName());
-        try {
-            OutputStream os = new FileOutputStream(f);
-            int bytesRead = 0;
-            byte[] buffer = new byte[8192];
-            while ((bytesRead = ins.read(buffer, 0, 8192)) != -1) {
-                os.write(buffer, 0, bytesRead);
-            }
-            os.close();
-            ins.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        File f = new File(path + file.getContentDisposition().getFileName());
+        OutputStream os = new FileOutputStream(f);
+        int bytesRead = 0;
+        byte[] buffer = new byte[8192];
+        while ((bytesRead = ins.read(buffer, 0, 8192)) != -1) {
+            os.write(buffer, 0, bytesRead);
         }
+        os.close();
+        ins.close();
     }
 }
