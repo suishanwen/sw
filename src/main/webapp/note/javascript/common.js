@@ -30,3 +30,21 @@ function IsPC() {
     }
     return flag;
 }
+
+
+var Path = function () {
+    var reg = /^\//;
+    return {
+        getUri: function (url) {
+            if (reg.test(url)) {
+                return encodeURI(url);
+            } else {
+                var pathName = window.document.location.pathname;
+                return encodeURI(pathName.substring(0, pathName.substr(1).indexOf('/') + 1) + "/" + url);
+            }
+        },
+        refresh: function () {
+            window.document.location.reload();
+        }
+    };
+}();
