@@ -5,7 +5,7 @@
 </head>
 <body ng-controller="NoteController">
 <div class="note-index" self-height="$(window).height()">
-    <div class="book-mark" ng-show="!buttonShow" ng-mouseenter="buttonShow = true" ng-mouseleave="buttonDelayHide()"><span><img src="http://121.42.239.141/note/assets/img/bookmarks.jpg"></span></div>
+    <div class="book-mark" ng-show="!buttonShow && source!=='sw'" ng-mouseenter="buttonShow = true" ng-mouseleave="buttonDelayHide()"><span><img src="http://121.42.239.141/note/assets/img/bookmarks.jpg"></span></div>
     <div class="operate" ng-show="buttonShow">
         <button class="btn btn-primary" ng-click="editNote()">新增</button>
         <button class="btn btn-danger" ng-click="editNote(note)">编辑</button>
