@@ -8,9 +8,9 @@
     <div align="center">
         <input id="title" type="text" ng-model="search.title" placeholder="Search" autofocus/>
     </div>
-    <div class="note-list">
+    <div class="note-list" self-height="$(window).height()-32">
         <ul>
-            <li ng-repeat="note in notes  track by $index|filter:search" ng-click="showNote(note.id)">
+            <li ng-repeat="note in notes|filter:search" ng-click="showNote(note.id)">
                 <span class="title">
                     <span ng-bind="note.title"></span>
                 </span>

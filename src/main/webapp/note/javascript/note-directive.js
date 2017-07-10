@@ -7,6 +7,38 @@ angular.module('noteApp').directive("selfWidth",function(){
     }
 });
 
+/**
+ *dom编译期设置元素高度，可以接受数字或者表达式
+ */
+angular.module('noteApp').directive('selfHeight', ['$timeout', function ($timeout) {
+    function _resizeElement(element, selfHeight) {
+        element[0].style.height = ((typeof selfHeight === "number") ? selfHeight : eval(selfHeight)) + "px";
+    }
+
+    return {
+        priority: 1000,
+        link: function (scope, element, attrs) {
+            var selfHeight = attrs["selfHeight"];
+            var on = attrs["on"];
+            if (on) {
+                $(window).resize(function () {
+                    _resizeElement(element, scope.$eval(selfHeight));
+                });
+                scope.$watch(on, function () {
+                    $timeout(function () {
+                        _resizeElement(element, scope.$eval(selfHeight));
+                    }, 100);
+                }, true);
+            } else {
+                $(window).resize(function () {
+                    _resizeElement(element, selfHeight);
+                });
+                _resizeElement(element, selfHeight);
+            }
+        }
+    };
+}]);
+
 angular.module('noteApp').directive('fileInput', ['$parse', function ($parse) {
     return {
         restrict: "EA",
