@@ -1,7 +1,7 @@
 # sw
 personal server
 
-built-in webapp:
+built-in spa:
 
 http://121.42.239.141:8051/sw/note/index.html
 
