@@ -217,7 +217,7 @@
     <!--最新-->
     <div class="container-fluid" ng-if="upToDate">
         <div ng-repeat="recommend in recommends" class="time_line_wap" ng-click="openNote(recommend.id)">
-            <div class="time_line_caption">{{::getPostTime(recommend.postTime)}} ago</div>
+            <div class="time_line_caption">{{::getPostTime(recommend.postTime,$last)}}</div>
             <div class="time_line_paragraph">
                 <h1>{{::recommend.title}}</h1>
                 <p>

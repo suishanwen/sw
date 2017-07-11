@@ -10,5 +10,6 @@ database:
         hibernate.c3p0.max_statements: 100
         hibernate.c3p0.acquire_increment: 5
         hibernate.c3p0.idle_test_period: 60
+        hibernate.show_sql: true
 http:
     port: 8051

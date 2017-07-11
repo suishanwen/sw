@@ -1,7 +1,7 @@
 var mineApp = angular.module('mineApp', []);
 
 
-var mimeController = ["$scope", "$http", "$timeout", function ($scope, $http, $timeout) {
+var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope, $http, $timeout, $filter) {
     $scope.now = {};
     $scope.upToDate = false;
     $scope.recommends = [];
@@ -28,7 +28,10 @@ var mimeController = ["$scope", "$http", "$timeout", function ($scope, $http, $t
         });
     }
 
-    function getPostTime(postTime) {
+    function getPostTime(postTime,islast) {
+        if(islast){
+            return $filter('date')(postTime, 'MM-dd yyyy');
+        }
         var pDate = new Date(postTime);
         var year = $scope.now.year - pDate.getFullYear();
         var month = $scope.now.month - (pDate.getMonth() + 1 );
@@ -37,27 +40,27 @@ var mimeController = ["$scope", "$http", "$timeout", function ($scope, $http, $t
         var minutes = $scope.now.minutes - pDate.getMinutes();
         var seconds = $scope.now.seconds - pDate.getSeconds();
         if (year === 1 && month < 0) {
-            return 12 + month + " month";
+            return 12 + month + " month ago";
         } else if (year > 0) {
-            return year + " year";
+            return year + " year ago";
         } else if (month === 1 && day < 0) {
-            return parseInt(((new Date().getTime() - pDate.getTime()) / 1000 / 60 / 60 / 24)) + " days";
+            return parseInt(((new Date().getTime() - pDate.getTime()) / 1000 / 60 / 60 / 24)) + " days ago";
         } else if (month > 0) {
-            return month + " month";
+            return month + " month ago";
         } else if (day === 1 && hours < 0) {
-            return 24 + hours + " hours";
+            return 24 + hours + " hours ago";
         } else if (day > 0) {
-            return day + " day";
+            return day + " day ago";
         } else if (hours === 1 && minutes < 0) {
-            return 60 + minutes + " minutes";
+            return 60 + minutes + " minutes ago";
         } else if (hours > 0) {
-            return hours + " hours";
+            return hours + " hours ago";
         } else if (minutes === 1 && seconds < 0) {
-            return 60 + seconds + " seconds";
+            return 60 + seconds + " seconds ago";
         } else if (minutes > 0) {
-            return minutes + " minutes";
+            return minutes + " minutes ago";
         } else {
-            return seconds + " seconds";
+            return seconds + " seconds ago";
         }
     }
 
