@@ -47,7 +47,7 @@ var Path = function () {
         getUri: function (url) {
             var pathName = window.document.location.pathname;
             if (pathName.indexOf("/sw") === -1) {
-                return encodeURI("http://121.42.239.141:8051/sw" + url)
+                return encodeURI("http://121.42.239.141:8051/sw/" + url)
             }
             if (reg.test(url)) {
                 return encodeURI(url);
