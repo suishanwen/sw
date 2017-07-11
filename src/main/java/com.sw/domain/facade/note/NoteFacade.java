@@ -1,5 +1,6 @@
 package com.sw.domain.facade.note;
 
+import com.google.common.collect.Lists;
 import com.sw.domain.entity.note.Note;
 import com.sw.domain.facade.BaseFacade;
 import com.sw.domain.util.PostVo;
@@ -37,9 +38,35 @@ public class NoteFacade extends BaseFacade {
     }
 
     public List<PostVo> getAllPost() {
-        String sql="select new com.sw.domain.util.PostVo(n.id,n.title,n.postTime,n.editTime) from Note n order by "+
-                "case when n.editTime is null then n.postTime else n.editTime end desc";
-        return entityManager.createQuery(sql).getResultList();
+        String sql="SELECT\n" +
+                "    id,\n" +
+                "    title,\n" +
+                "    post_time,\n" +
+                "    edit_time\n" +
+                "FROM\n" +
+                "    note\n" +
+                "ORDER BY\n" +
+                "    CASE\n" +
+                "        WHEN edit_time IS NULL THEN post_time\n" +
+                "        ELSE edit_time\n" +
+                "    END\n" +
+                "DESC";
+        return createNativeQuery(sql, Lists.newArrayList(),PostVo.class);
     }
 
+    public List<PostVo> getRecommend() {
+        String sql="SELECT\n" +
+                "    id,\n" +
+                "    title,\n" +
+                "    summary,\n" +
+                "    tag,\n" +
+                "    post_time\n" +
+                "FROM\n" +
+                "    note\n" +
+                "WHERE\n" +
+                "    recommend = 1\n" +
+                "ORDER BY post_time DESC\n" +
+                "LIMIT 6";
+        return createNativeQuery(sql, Lists.newArrayList(),PostVo.class);
+    }
 }

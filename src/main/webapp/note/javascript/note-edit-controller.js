@@ -1,24 +1,39 @@
-var NoteEditController = function ($scope, $http, $timeout, $location, noteService) {
-    var newNote = function () {
-        $scope.selectedNote = {
-            id: null,
-            poster: "",
-            title: "",
-            content: "",
-            ip:"",
-            postTime: null,
-            editTime: null
-        }
+var NoteEditController = function ($scope, $http, $timeout, $location, noteService, $debounce) {
+    var oldVal = "";
+    var tags = [];
+    var Note = function () {
+        this.id = null;
+        this.poster = "";
+        this.title = "";
+        this.summary = "";
+        this.tag = "";
+        this.recommend = 0;
+        this.content = "";
+        this.ip = "";
+        this.postTime = null;
+        this.editTime = null;
     };
 
-    var initNote = function () {
+    function initNote() {
         $scope.selectedNote = noteService.note;
         if (!$scope.selectedNote) {
-            newNote()
+            $scope.selectedNote = new Note();
         }
-    };
+    }
 
-    initNote();
+    function changeTag() {
+        var newVal = $scope.selectedNote.tag;
+        if(newVal !== tags.join("|")){
+            var tag = newVal.substring(oldVal.length);
+            tags = oldVal.split("|");
+            tags.push(tag);
+            if (!isRepeat(tags)) {
+                $scope.selectedNote.tag = tags.join("|");
+            }else {
+                $scope.selectedNote.tag = oldVal;
+            }
+        }
+    }
 
     $scope.saveNote = function () {
         var url;
@@ -27,11 +42,8 @@ var NoteEditController = function ($scope, $http, $timeout, $location, noteServi
         } else {
             url = noteService.server + "api/note/add/";
         }
-        $scope.$apply(function(){
-            $scope.selectedNote.content = $("#content").val();
-        });
         $http.post(url, $scope.selectedNote).success(function (data) {
-            if(angular.equals(data,"")||angular.equals(data,null)){
+            if (angular.equals(data, "") || angular.equals(data, null)) {
                 notify("系统提示", "当前IP不允许编辑此贴！");
                 return;
             }
@@ -61,9 +73,22 @@ var NoteEditController = function ($scope, $http, $timeout, $location, noteServi
     };
 
 
-    content.onblur = function () {
-        $timeout(function(){
-            $scope.selectedNote.content = $("#content").val();
+    (function () {
+        initNote();
+
+        content.onblur = function () {
+            $timeout(function () {
+                $scope.selectedNote.content = $("#content").val();
+            });
+        };
+
+        /*输入内容改变后触发*/
+        $scope.$watch('selectedNote.tag', function (newValue, oldValue) {
+            if (newValue && oldValue && newValue.length > oldValue.length) {
+                oldVal = oldValue;
+                $debounce(changeTag, 1000);
+            }
         });
-    };
+    })();
+
 };

@@ -16,6 +16,9 @@ public class Note {
     private Date postTime;
     private Date editTime;
     private String ip;
+    private String summary;
+    private String tag;
+    private Integer recommend;
 
 
     public Note() {
@@ -84,5 +87,29 @@ public class Note {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Integer getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Integer recommend) {
+        this.recommend = recommend;
     }
 }

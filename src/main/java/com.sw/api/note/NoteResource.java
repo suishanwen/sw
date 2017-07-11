@@ -56,6 +56,13 @@ public class NoteResource {
         return userFacade.getNote(id);
     }
 
+    @GET
+    @Path("recommend")
+    @OnException("getRecommendNoteFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PostVo> getRecommend() {
+        return userFacade.getRecommend();
+    }
 
     @GET
     @OnException("getAllPostFailed")

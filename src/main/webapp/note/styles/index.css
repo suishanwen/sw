@@ -82,15 +82,24 @@ html, body {
 
 .note-edit-index .form-horizontal {
     margin-top: 20px;
-    align: center;
+}
+.note-edit-index .form-horizontal .form-group input {
+    margin-left: 20px;
 }
 
 .note-edit-index .form-horizontal .title {
-    width: 300px;
+    width: 450px;
 }
 
 .note-edit-index .form-horizontal .poster {
-    width: 80px;
+    width: 150px;
+}
+.note-edit-index .form-horizontal .summary {
+    width: 450px;
+}
+
+.note-edit-index .form-horizontal .tag {
+    width: 150px;
 }
 
 .note-edit-index .form-horizontal .content {

@@ -7,18 +7,14 @@ import java.util.Date;
 public class PostVo {
     private Integer id;
     private String title;
+    private String summary;
+    private String tag;
+    private Integer recommend;
     private Date postTime;
     private Date editTime;
 
-    public PostVo(Integer id) {
-        this.id = id;
-    }
+    public PostVo() {
 
-    public PostVo(Integer id, String title, Date postTime, Date editTime) {
-        this.id = id;
-        this.title = title;
-        this.postTime = postTime;
-        this.editTime = editTime;
     }
 
     public Integer getId() {
@@ -51,5 +47,29 @@ public class PostVo {
 
     public void setEditTime(Date editTime) {
         this.editTime = editTime;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Integer getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Integer recommend) {
+        this.recommend = recommend;
     }
 }

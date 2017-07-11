@@ -1,9 +1,10 @@
 package com.sw.domain.facade;
 
 import com.google.common.base.Optional;
+import com.sw.base.util.AliasToBeanResultTransformer;
+import com.sw.base.util.AliasToEntityMapResultTransformer;
 import org.hibernate.SQLQuery;
-import org.hibernate.transform.AliasToBeanResultTransformer;
-import org.hibernate.transform.AliasToEntityMapResultTransformer;
+
 
 import javax.inject.Inject;
 import javax.persistence.*;
