@@ -2,11 +2,12 @@ var mineApp = angular.module('mineApp', []);
 
 
 var mimeController = ["$scope", "$http", "$timeout", function ($scope, $http, $timeout) {
+    var uri = window.document.location.pathname.substring(0, window.document.location.pathname.substr(1).indexOf('/me') + 1);
     $scope.now = {};
     $scope.upToDate = false;
     $scope.recommends = [];
     function getRecommend() {
-        $http.get("http://121.42.239.141:8051/sw/api/note/recommend").success(function (data) {
+        $http.get(uri + "/api/note/recommend").success(function (data) {
             $scope.recommends = data;
             $scope.recommends.forEach(function (recommend) {
                 recommend.tags = recommend.tag.split("|");
@@ -66,7 +67,7 @@ var mimeController = ["$scope", "$http", "$timeout", function ($scope, $http, $t
     }
 
     function openNote(id) {
-        window.open("http://121.42.239.141/#/note?source=sw&&thread=" + id);
+        window.open(uri +"/note/index.html#/note?source=sw&&thread=" + id);
     }
 
     $scope.getPostTime = getPostTime;

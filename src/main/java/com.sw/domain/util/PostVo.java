@@ -7,6 +7,7 @@ import java.util.Date;
 public class PostVo {
     private Integer id;
     private String title;
+    private String poster;
     private String summary;
     private String tag;
     private Date postTime;
@@ -62,5 +63,13 @@ public class PostVo {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 }
