@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="mineApp">
   <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
@@ -22,7 +22,7 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
   </head>
-<body>
+<body ng-controller="MineController">
 <div class="banner" id="templatemo_banner_slide">
     <ul>
         <li class="templatemo_banner_slide_01">
@@ -214,8 +214,23 @@
 </div>
 <div id="templatemo_timeline" class="container_wapper">
     <h1>Timeline</h1>
-    <div class="container-fluid">
-        <div class="time_line_wap" onclick="openNote(52)">
+    <!--最新-->
+    <div class="container-fluid" ng-if="upToDate">
+        <div ng-repeat="recommend in recommends" class="time_line_wap" ng-click="openNote(recommend.id)">
+            <div class="time_line_caption">{{::getPostTime(recommend.postTime)}} ago</div>
+            <div class="time_line_paragraph">
+                <h1>{{::recommend.title}}</h1>
+                <p>
+                    <span class="glyphicon glyphicon-user"></span> <a href="javascript:void(0)">{{::recommend.poster}}</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-bookmark"></span> <span ng-repeat="tag in recommend.tags"><a href="javascript:void(0)">{{::tag}}</a>&nbsp</span> &nbsp;&nbsp;
+                </p>
+                <p>{{::recommend.summary}}</p>
+            </div>
+        </div>
+    </div>
+    <!--离线-->
+    <div class="container-fluid" ng-if="!upToDate">
+        <div class="time_line_wap" ng-click="openNote(52)">
             <div class="time_line_caption">3 weeks ago</div>
             <div class="time_line_paragraph">
                 <h1>oracle结束当前连接进程</h1>
@@ -228,7 +243,7 @@
         </div>
         <div class="time_line_wap">
             <div class="time_line_caption">one month ago</div>
-            <div class="time_line_paragraph" onclick="openNote(50)">
+            <div class="time_line_paragraph" ng-click="openNote(50)">
                 <h1>IE兼容forEach/map/every/some/indexOf/filter新方法</h1>
                 <p>
                     <span class="glyphicon glyphicon-user"></span> <a href="#">segmentfault</a> &nbsp;&nbsp;
@@ -239,18 +254,18 @@
         </div>
         <div class="time_line_wap">
             <div class="time_line_caption">two month ago</div>
-            <div class="time_line_paragraph" onclick="openNote(43)">
+            <div class="time_line_paragraph" ng-click="openNote(43)">
                 <h1>不得不看的Java代码性能优化总结</h1>
                 <p>
-                       <span class="glyphicon glyphicon-user"></span> <a href="#">csdn</a> &nbsp;&nbsp;
-                       <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Java</a>, <a href="#">优化</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-user"></span> <a href="#">csdn</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Java</a>, <a href="#">优化</a> &nbsp;&nbsp;
                 </p>
                 <p>代码优化，一个很重要的课题。可能有些人觉得没用，一些细小的地方有什么好修改的，改与不改对于代码的运行效率有什么影响呢？这个问题我是这么考虑的，就像大海里面的鲸鱼一样，它吃一条小虾米有用吗？没用，但是，吃的小虾米一多之后，鲸鱼就被喂饱了。代码优化也是一样，如果项目着眼于尽快无BUG上线，那么此时可以抓大放小，代码的细节可以不精打细磨；但是如果有足够的时间开发、维护代码，这时候就必须考虑每个可以优化的细节了，一个一个细小的优化点累积起来，对于代码的运行效率绝对是有提升的</p>
             </div>
         </div>
         <div class="time_line_wap">
             <div class="time_line_caption">two month ago</div>
-            <div class="time_line_paragraph" onclick="openNote(42)">
+            <div class="time_line_paragraph" ng-click="openNote(42)">
                 <h1>关于Oracle误操作--数据被Commit后的数据回退恢复（闪回）</h1>
                 <p>
                     <span class="glyphicon glyphicon-user"></span> <a href="#">博客园</a> &nbsp;&nbsp;
@@ -261,22 +276,22 @@
         </div>
         <div class="time_line_wap">
             <div class="time_line_caption">three month ago</div>
-            <div class="time_line_paragraph" onclick="openNote(41)">
+            <div class="time_line_paragraph" ng-click="openNote(41)">
                 <h1>手动编译jdk8 </h1>
                 <p>
-                       <span class="glyphicon glyphicon-user"></span> <a href="#">sw</a> &nbsp;&nbsp;
-                       <span class="glyphicon glyphicon-bookmark"></span> <a href="#">jdk</a>, <a href="#">编译</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-user"></span> <a href="#">sw</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-bookmark"></span> <a href="#">jdk</a>, <a href="#">编译</a> &nbsp;&nbsp;
                 </p>
                 <p>自己动手在Linux环境下编译JDK</p>
             </div>
         </div>
         <div class="time_line_wap">
             <div class="time_line_caption">04-12 2017</div>
-            <div class="time_line_paragraph" onclick="openNote(39)">
+            <div class="time_line_paragraph" ng-click="openNote(39)">
                 <h1>JPA与Hibernate的关系</h1>
                 <p>
-                       <span class="glyphicon glyphicon-user"></span> <a href="#">cnblog</a> &nbsp;&nbsp;
-                       <span class="glyphicon glyphicon-bookmark"></span> <a href="#">jpa</a>, <a href="#">Hibernate</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-user"></span> <a href="#">cnblog</a> &nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-bookmark"></span> <a href="#">jpa</a>, <a href="#">Hibernate</a> &nbsp;&nbsp;
                 </p>
                 <p>总的来说，JPA是规范，Hibernate是框架，JPA是持久化规范，而Hibernate实现了JPA。</p>
             </div>
@@ -342,20 +357,13 @@
         <p>Copyright &copy; 2017 suishanwen |  <a href="http://www.viewhigh.com/" title="北京东软望海科技有限公司" target="_blank">北京东软望海科技有限公司</a></p>
     </div>
 </div>
-<script>
-    function sendEmail(){
-        alert("感谢！");
-    }
-    function openNote(id){
-        window.open("http://121.42.239.141/#/note?source=sw&&thread="+id);
-    }
-</script>
-<script src="js/jquery.min.js"></script>
+<script src="http://121.42.239.141/assets/angular-min.js"></script>
+<script src="http://121.42.239.141/assets/jquery-2.2.2.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.singlePageNav.min.js"></script>
 <script src="js/unslider.min.js"></script>
-
 <script src="js/templatemo_script.js"></script>
+<script src="js/me-app.js"></script>
 </body>
 </html>

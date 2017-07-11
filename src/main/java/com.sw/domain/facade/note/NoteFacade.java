@@ -58,6 +58,7 @@ public class NoteFacade extends BaseFacade {
         String sql="SELECT\n" +
                 "    id,\n" +
                 "    title,\n" +
+                "    poster,\n" +
                 "    summary,\n" +
                 "    tag,\n" +
                 "    post_time\n" +
