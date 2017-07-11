@@ -13,7 +13,9 @@ public class Note {
     private String title;
     @Column(length = 2000)
     private String content;
+    @Column(name = "post_time")
     private Date postTime;
+    @Column(name = "edit_time")
     private Date editTime;
     private String ip;
     private String summary;
