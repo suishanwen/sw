@@ -9,7 +9,6 @@ public class PostVo {
     private String title;
     private String summary;
     private String tag;
-    private Integer recommend;
     private Date postTime;
     private Date editTime;
 
@@ -63,13 +62,5 @@ public class PostVo {
 
     public void setTag(String tag) {
         this.tag = tag;
-    }
-
-    public Integer getRecommend() {
-        return recommend;
-    }
-
-    public void setRecommend(Integer recommend) {
-        this.recommend = recommend;
     }
 }
