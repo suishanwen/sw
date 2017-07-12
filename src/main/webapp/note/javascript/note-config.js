@@ -21,5 +21,5 @@ angular.module('noteApp').run(["$q","$templateCache",function($q,$templateCache)
             }
         });
     }
-    $templateCache.put('progress.html', '<div class="alert-level">\n    <i style="position: absolute;top: 40%;left: 50%;right: 50%;" class=\'icon-spinner icon-spin\'>\n</div>');
+    $templateCache.put('progress.html', '<div class="alert-level">\n    <i style="position: absolute;top: 40%;left: 50%;right: 50%;" class=\'fa fa-spinner fa-pulse\'>\n</div>');
 }]);
