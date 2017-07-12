@@ -33,17 +33,6 @@ html, body {
     margin-top: 8px;
     margin-left: 0;
 }
-.btn .spin{
-    width:16px;
-    height:16px;
-    margin-left: 3px;
-    margin-top: -1px;
-}
-.btn .spin.icon-loading:before {
-    font-size: 18px;
-    margin-left: -2px;
-    margin-top: 0;
-}
 /*背景层*/
 .alert-level{position:fixed;top:0;bottom:0;left:0;right:0;z-index:1060;background-color:rgba(0,0,0,0.2)}
 
