@@ -28,14 +28,15 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
         });
     }
 
-    function getPostTime(postTime,islast) {
-        if(islast){
+    function getPostTime(postTime, islast) {
+        if (islast) {
             return $filter('date')(postTime, 'MM-dd yyyy');
         }
         var pDate = new Date(postTime);
         var year = $scope.now.year - pDate.getFullYear();
         var month = $scope.now.month - (pDate.getMonth() + 1 );
-        var day = $scope.now.day - pDate.getDate();
+        var days = $scope.now.day - pDate.getDate();
+        var weeks = parseInt(days / 7);
         var hours = $scope.now.hours - pDate.getHours();
         var minutes = $scope.now.minutes - pDate.getMinutes();
         var seconds = $scope.now.seconds - pDate.getSeconds();
@@ -43,14 +44,21 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
             return 12 + month + " month ago";
         } else if (year > 0) {
             return year + " year ago";
-        } else if (month === 1 && day < 0) {
-            return parseInt(((new Date().getTime() - pDate.getTime()) / 1000 / 60 / 60 / 24)) + " days ago";
+        } else if (month === 1 && days < 0) {
+            days = parseInt(((new Date().getTime() - pDate.getTime()) / 1000 / 60 / 60 / 24));
+            weeks = parseInt(days / 7);
+            if (weeks > 0) {
+                return weeks + " weeks ago";
+            }
+            return days + " days ago";
         } else if (month > 0) {
             return month + " month ago";
-        } else if (day === 1 && hours < 0) {
+        } else if (weeks > 0) {
+            return weeks + " weeks ago";
+        } else if (days === 1 && hours < 0) {
             return 24 + hours + " hours ago";
-        } else if (day > 0) {
-            return day + " day ago";
+        } else if (days > 0) {
+            return days + " days ago";
         } else if (hours === 1 && minutes < 0) {
             return 60 + minutes + " minutes ago";
         } else if (hours > 0) {
