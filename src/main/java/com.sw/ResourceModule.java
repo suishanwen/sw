@@ -32,6 +32,7 @@ import static com.sw.base.config.Configuration.config;
 public class ResourceModule extends ApplicationModule<JpaConfiguration> {
     private static final String DEFAULT_CONFIG_FOLDER = "./";
     private static final String DEFAULT_YML_FILENAME = "config.yml";
+    private static final String DEFAULT_YML_PATHNAME = "/home/config.yml";
     private static Logger logger = LoggerFactory.getLogger(ResourceModule.class);
     private static JpaConfiguration jpaConfiguration;
 
@@ -42,12 +43,16 @@ public class ResourceModule extends ApplicationModule<JpaConfiguration> {
     @Override
     protected JpaConfiguration createDefaultConfiguration(Configuration.ConfigurationBuilder config) {
         try {
-            URL configFile = this.getClass().getClassLoader().getResource(DEFAULT_CONFIG_FOLDER + DEFAULT_YML_FILENAME);
-            if (configFile != null) {
-                logger.info("Reading configuration from project config");
-                jpaConfiguration = readConfigurationFromFile(configFile.getFile());
+            if (!getDefaultFile().equals("")) {
+                jpaConfiguration = readConfigurationFromFile(DEFAULT_YML_PATHNAME);
             } else {
-                logger.warn("config file in project url is null");
+                URL configFile = this.getClass().getClassLoader().getResource(DEFAULT_CONFIG_FOLDER + DEFAULT_YML_FILENAME);
+                if (configFile != null) {
+                    logger.info("Reading configuration from project config");
+                    jpaConfiguration = readConfigurationFromFile(configFile.getFile());
+                } else {
+                    logger.warn("config file in project url is null");
+                }
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -56,6 +61,14 @@ public class ResourceModule extends ApplicationModule<JpaConfiguration> {
             jpaConfiguration = defaultConfiguration();
         }
         return jpaConfiguration;
+    }
+
+    private static String getDefaultFile() {
+        File file = new File(DEFAULT_YML_PATHNAME);
+        if(file.exists()){
+            return DEFAULT_YML_PATHNAME;
+        }
+        return "";
     }
 
     private JpaConfiguration readConfigurationFromFile(String path) {
