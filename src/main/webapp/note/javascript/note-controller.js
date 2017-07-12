@@ -1,6 +1,6 @@
-var NoteController = function ($scope, $http, $timeout, $location, noteService) {
+var NoteController = ["$scope", "$http", "$timeout", "$location", "noteService", "progress", function ($scope, $http, $timeout, $location, noteService, progress) {
     $scope.source = "";
-    var getNote = function () {
+    function getNote() {
         var source = getQueryString(window.location.hash, "source");
         var id = getQueryString(window.location.hash, "thread");
         if (!id) {
@@ -8,21 +8,26 @@ var NoteController = function ($scope, $http, $timeout, $location, noteService) 
             $scope.source = sessionStorage.getItem("source");
             if (isNaN(id)) {
                 $location.path("/list");
-                return
+                return;
             }
         } else {
             sessionStorage.setItem("id", id);
             sessionStorage.setItem("source", source);
-            window.location.hash = "#/note"
+            window.location.hash = "#/note";
+            return;
         }
         var url = noteService.server + "api/note/get?id=" + id;
+        progress.open();
         $http.get(url).success(function (data) {
             $scope.note = data;
             $scope.buttonShow = false;
             $("#content")[0].innerHTML = $scope.note.content;
+            progress.close();
         }).error(function (data) {
+            notify("查询失败", data.message);
+            progress.close();
         });
-    };
+    }
 
     getNote();
 
@@ -40,4 +45,4 @@ var NoteController = function ($scope, $http, $timeout, $location, noteService) 
             $scope.buttonShow = false;
         }, 8000)
     }
-};
+}];

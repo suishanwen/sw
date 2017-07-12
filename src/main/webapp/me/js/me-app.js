@@ -77,7 +77,8 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
     }
 
     function openNote(id) {
-        window.open("http://121.42.239.141#/note?source=sw&&thread=" + id);
+        var uri = window.location.href.substring(0, window.location.href.indexOf("/me"));
+        window.open(uri + "/note/index.html#/note?source=sw&&thread=" + id);
     }
 
     $scope.getPostTime = getPostTime;
