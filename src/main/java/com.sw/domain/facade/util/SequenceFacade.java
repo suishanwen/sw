@@ -1,7 +1,7 @@
 package com.sw.domain.facade.util;
 
 import com.google.inject.persist.Transactional;
-import com.sw.domain.entity.util.SwSequence;
+import com.sw.domain.util.SwSequence;
 import com.sw.domain.facade.BaseFacade;
 
 import java.util.Calendar;

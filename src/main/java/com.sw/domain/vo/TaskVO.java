@@ -1,4 +1,4 @@
-package com.sw.domain.util;
+package com.sw.domain.vo;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;

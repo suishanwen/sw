@@ -3,7 +3,9 @@ package com.sw.domain.facade.note;
 import com.google.common.collect.Lists;
 import com.sw.domain.entity.note.Note;
 import com.sw.domain.facade.BaseFacade;
-import com.sw.domain.util.PostVo;
+import com.sw.domain.util.MailUtils;
+import com.sw.domain.vo.EnquiryVO;
+import com.sw.domain.vo.PostVo;
 import com.google.inject.persist.Transactional;
 
 import java.util.Date;
@@ -15,9 +17,9 @@ public class NoteFacade extends BaseFacade {
     @Transactional
     public Note addNote(Note note) {
         note.setPostTime(new Date());
-        try{
+        try {
             entityManager.persist(note);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -38,7 +40,7 @@ public class NoteFacade extends BaseFacade {
     }
 
     public List<PostVo> getAllPost() {
-        String sql="SELECT\n" +
+        String sql = "SELECT\n" +
                 "    id,\n" +
                 "    title,\n" +
                 "    post_time,\n" +
@@ -51,11 +53,11 @@ public class NoteFacade extends BaseFacade {
                 "        ELSE edit_time\n" +
                 "    END\n" +
                 "DESC";
-        return createNativeQuery(sql, Lists.newArrayList(),PostVo.class);
+        return createNativeQuery(sql, Lists.newArrayList(), PostVo.class);
     }
 
     public List<PostVo> getRecommend() {
-        String sql="SELECT\n" +
+        String sql = "SELECT\n" +
                 "    id,\n" +
                 "    title,\n" +
                 "    poster,\n" +
@@ -68,6 +70,13 @@ public class NoteFacade extends BaseFacade {
                 "    recommend = 1\n" +
                 "ORDER BY post_time DESC\n" +
                 "LIMIT 6";
-        return createNativeQuery(sql, Lists.newArrayList(),PostVo.class);
+        return createNativeQuery(sql, Lists.newArrayList(), PostVo.class);
+    }
+
+    public void sendEnquiry(EnquiryVO enquiryVO){
+        MailUtils cn = new MailUtils();
+        cn.setAddress("controlservice@sina.com", "suishanwen@icloud.com", enquiryVO.getName() + ":" + enquiryVO.getEmail() + ":" + enquiryVO.getSubject());
+        cn.send("smtp.sina.com", "controlservice@sina.com", "a123456", enquiryVO.getMessage());
+
     }
 }

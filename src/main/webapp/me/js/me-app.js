@@ -2,9 +2,17 @@ var mineApp = angular.module('mineApp', []);
 
 
 var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope, $http, $timeout, $filter) {
+    var Enquiry = function () {
+        this.name = "";
+        this.email = "";
+        this.subject = "";
+        this.message = "";
+    };
     $scope.now = {};
     $scope.upToDate = false;
     $scope.recommends = [];
+    $scope.enquiry = new Enquiry();
+
     function getRecommend() {
         $http.get(Path.getUri("api/note/recommend")).success(function (data) {
             $scope.recommends = data;
@@ -72,17 +80,24 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
         }
     }
 
-    function sendEmail() {
-        alert("感谢！");
-    }
-
     function openNote(id) {
         var uri = window.location.href.substring(0, window.location.href.indexOf("/me"));
         window.open(uri + "/note/index.html#/note?source=sw&&thread=" + id);
     }
 
+    function resetEnquiry() {
+        $scope.enquiry = new Enquiry();
+    }
+
+    function sendEmail() {
+        resetEnquiry();
+        alert("感谢！");
+        $http.post(Path.getUri("api/note/enquiry"), $scope.enquiry);
+    }
+
     $scope.getPostTime = getPostTime;
     $scope.openNote = openNote;
+    $scope.resetEnquiry = resetEnquiry;
     $scope.sendEmail = sendEmail;
     (function () {
         getRecommend();

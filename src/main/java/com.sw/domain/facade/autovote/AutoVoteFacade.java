@@ -3,15 +3,14 @@ package com.sw.domain.facade.autovote;
 
 import com.google.inject.persist.Transactional;
 import com.sw.domain.entity.autovote.*;
-import com.sw.domain.entity.util.DateUtils;
+import com.sw.domain.util.DateUtils;
 import com.sw.domain.facade.BaseFacade;
-import com.sw.domain.util.TaskVO;
+import com.sw.domain.vo.TaskVO;
 
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 public class AutoVoteFacade extends BaseFacade {
 
@@ -21,7 +20,7 @@ public class AutoVoteFacade extends BaseFacade {
 
     public List<TaskVO> getTaskInfoToday() {
         Date today = DateUtils.parseDate(DateUtils.formatDate(new Date(), DateUtils.YYYY_MM_DD), DateUtils.YYYY_MM_DD);
-        String sql = "select new com.sw.domain.util.TaskVO(" +
+        String sql = "select new com.sw.domain.vo.TaskVO(" +
                 " ti.taskName," +
                 " ti.taskCate," +
                 " ti.ipType," +

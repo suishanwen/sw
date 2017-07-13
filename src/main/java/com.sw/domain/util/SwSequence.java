@@ -1,4 +1,4 @@
-package com.sw.domain.entity.util;
+package com.sw.domain.util;
 
 
 import javax.persistence.Entity;

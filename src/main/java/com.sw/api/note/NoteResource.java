@@ -4,25 +4,33 @@ package com.sw.api.note;
 import com.sw.domain.entity.note.Note;
 import com.sw.domain.facade.note.NoteFacade;
 import com.sw.domain.util.OnException;
-import com.sw.domain.util.PostVo;
+import com.sw.domain.vo.EnquiryVO;
+import com.sw.domain.vo.PostVo;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/note")
 public class NoteResource {
 
-    private NoteFacade userFacade;
+    private NoteFacade noteFacade;
 
     @Inject
-    public NoteResource(NoteFacade userFacade) {
-        this.userFacade = userFacade;
+    public NoteResource(NoteFacade noteFacade) {
+        this.noteFacade = noteFacade;
     }
 
+    @GET
+    @OnException("getAllPostFailed")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PostVo> get() {
+        return noteFacade.getAllPost();
+    }
 
     @POST
     @Path("add")
@@ -30,7 +38,7 @@ public class NoteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Note add(Note note,@Context HttpServletRequest request) {
         note.setIp(getIpAddr(request));
-        return userFacade.addNote(note);
+        return noteFacade.addNote(note);
     }
 
     @POST
@@ -45,7 +53,7 @@ public class NoteResource {
             }
         }
         note.setIp(ip);
-        return userFacade.editNote(note);
+        return noteFacade.editNote(note);
     }
 
     @GET
@@ -53,7 +61,7 @@ public class NoteResource {
     @OnException("getNoteFailed")
     @Produces(MediaType.APPLICATION_JSON)
     public Note get(@QueryParam("id") Integer id) {
-        return userFacade.getNote(id);
+        return noteFacade.getNote(id);
     }
 
     @GET
@@ -61,14 +69,16 @@ public class NoteResource {
     @OnException("getRecommendNoteFailed")
     @Produces(MediaType.APPLICATION_JSON)
     public List<PostVo> getRecommend() {
-        return userFacade.getRecommend();
+        return noteFacade.getRecommend();
     }
 
-    @GET
-    @OnException("getAllPostFailed")
+    @POST
+    @Path("enquiry")
+    @OnException("sendEnquiryFailed")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PostVo> get() {
-        return userFacade.getAllPost();
+    public Response sendEnquiry(EnquiryVO enquiryVO){
+        noteFacade.sendEnquiry(enquiryVO);
+        return Response.ok().build();
     }
 
     private static String getIpAddr(HttpServletRequest request) {
