@@ -1,7 +1,7 @@
 # sw
 personal server
 
-Guice4 + jersey2 +hibernate5 with jerkins auto build
+Guice4 + jersey2 +hibernate5 with jenkins auto build
 
 built-in spa:
 
