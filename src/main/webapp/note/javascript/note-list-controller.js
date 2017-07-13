@@ -1,4 +1,4 @@
-var NoteListController = function ($scope, $http, $location,noteService) {
+var NoteListController = function ($scope, $http, $location,noteService,progress) {
     $scope.notes=[];
     var getNotes=function(){
         var url = noteService.server+"api/note/";
@@ -13,5 +13,5 @@ var NoteListController = function ($scope, $http, $location,noteService) {
     $scope.showNote=function(id){
         sessionStorage.setItem("id",id);
         $location.path("/note");
-    }
+    };
 };
