@@ -99,3 +99,5 @@ fatJar {
     exclude "jetty-dir.css"
     exclude "META-INF/ECLIPSEF.*"
 }
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
