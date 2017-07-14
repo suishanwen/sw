@@ -41,6 +41,57 @@ function isRepeat(arr) {
     return false;
 }
 
+function getUnit(count, unit) {
+    if (count === 1 || unit === "month") {
+        return count + " " + unit + " ago";
+    } else {
+        return count + " " + unit + "s ago";
+
+    }
+}
+
+function getTimeInfo(t, n) {
+    var pDate = new Date(t);
+    var year = n.year - pDate.getFullYear();
+    var month = n.month - (pDate.getMonth() + 1 );
+    var days = n.day - pDate.getDate();
+    var weeks = parseInt(days / 7);
+    var hours = n.hours - pDate.getHours();
+    var minutes = n.minutes - pDate.getMinutes();
+    var seconds = n.seconds - pDate.getSeconds();
+    if (year === 1 && month < 0) {
+        return getUnit(12 + month, "month");
+    } else if (year > 0) {
+        return getUnit(year, "year");
+    } else if (month === 1 && days < 0) {
+        days = parseInt(((new Date().getTime() - pDate.getTime()) / 1000 / 60 / 60 / 24));
+        weeks = parseInt(days / 7);
+        if (weeks > 0) {
+            return getUnit(weeks, "week");
+        }
+        return getUnit(days, "day");
+    } else if (month > 0) {
+        return getUnit(month, "month");
+    } else if (weeks > 0) {
+        return getUnit(weeks, "week");
+    } else if (days === 1 && hours < 0) {
+        return getUnit(24 + hours, "hour");
+    } else if (days > 0) {
+        return getUnit(days, "day");
+    } else if (hours === 1 && minutes < 0) {
+        return getUnit(60 + minutes, "minute");
+    } else if (hours > 0) {
+        return getUnit(hours, "hour");
+    } else if (minutes === 1 && seconds < 0) {
+        return getUnit(60 + seconds, "second");
+    } else if (minutes > 0) {
+        return getUnit(minutes, "minute");
+    } else {
+        return getUnit(seconds, " second");
+    }
+}
+
+
 var Path = function () {
     var reg = /^\//;
     return {
