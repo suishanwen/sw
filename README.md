@@ -18,4 +18,3 @@ nginx:
 http://121.42.239.141
 
 http://121.42.239.141/me/index.html
-
