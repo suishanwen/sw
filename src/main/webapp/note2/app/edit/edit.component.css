@@ -1,0 +1,51 @@
+.badge {
+    border-radius: 2px;
+}
+
+.note-edit-index {
+    text-align: center;
+}
+
+.note-edit-index .note-info {
+    display: flex;
+    justify-content: space-between;
+    width: 808px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.note-edit-index .note-subject {
+    background: red;
+}
+
+.note-edit-index .form-horizontal {
+    margin-top: 20px;
+}
+.note-edit-index .form-horizontal .form-group input {
+    margin-left: 20px;
+}
+
+.note-edit-index .form-horizontal .title {
+    width: 450px;
+}
+
+.note-edit-index .form-horizontal .poster {
+    width: 150px;
+}
+.note-edit-index .form-horizontal .summary {
+    width: 450px;
+}
+
+.note-edit-index .form-horizontal .tag {
+    width: 150px;
+}
+
+.note-edit-index .form-horizontal .content {
+    width: 800px;
+    height: 500px;
+    margin-top: 20px;
+}
+
+.note-edit-index .form-horizontal .operate {
+    margin-top: 20px;
+}

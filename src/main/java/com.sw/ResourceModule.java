@@ -26,7 +26,8 @@ import static com.sw.base.config.Configuration.config;
 @JpaPersist(unit = "domain")
 @EmbeddedGrizzly(assets =
         {@EmbeddedGrizzly.Asset(uri = "/note", resource = "note"),
-                @EmbeddedGrizzly.Asset(uri = "/me", resource = "me")
+                @EmbeddedGrizzly.Asset(uri = "/me", resource = "me"),
+                @EmbeddedGrizzly.Asset(uri = "/note2", resource = "note2")
         }
 )
 public class ResourceModule extends ApplicationModule<JpaConfiguration> {

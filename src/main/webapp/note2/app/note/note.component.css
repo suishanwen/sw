@@ -1,0 +1,47 @@
+.note-index {
+    text-align: center;
+    overflow-y: auto;
+}
+
+.note-index .edit {
+    margin-top: 20px;
+    font-size: 12px;
+    color: grey;
+}
+
+.note-index .title {
+    margin-top: 20px;
+}
+
+.note-index .title span {
+    margin-right: 50px;
+}
+
+.note-index .box {
+    width: 808px;
+    margin: 0 auto;
+}
+
+.note-index .box .content {
+    text-align: left;
+    margin: 20px auto;
+}
+
+.note-index .book-mark {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    margin: auto;
+    top: 0;
+}
+
+.note-index .book-mark img {
+    width: 20px;
+    height: 30px;
+}
+
+.eEditorClient {
+    text-align: left;
+    margin: 20px auto;
+}
+
