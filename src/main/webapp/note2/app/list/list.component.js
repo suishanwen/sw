@@ -30,17 +30,16 @@ var ListComponent = (function () {
     };
     ListComponent.prototype.ngOnInit = function () {
     };
-    ListComponent = __decorate([
-        core_1.Component({
-            selector: 'note',
-            template: "\n<div class=\"note-list-index\">\n    <div align=\"center\">\n        <input id=\"title\" [(ngModel)]=\"search.title\" placeholder=\"Search\" autofocus/>\n    </div>\n    <div class=\"note-list\" self-height=\"$(window).height()-32\">\n        <ul>\n            <li *ngFor=\"let note of notes|SearchPipe:search.title\" (click)=\"showNote(note.id)\">\n                <span class=\"title\">\n                    <span>{{note.title}}</span>\n                </span>\n                <span class=\"update\">{{(note.editTime?note.editTime:note.postTime)|date:'yyyy-MM-dd HH:mm:ss'}}</span>\n            </li>\n        </ul>\n    </div>\n</div>\n    ",
-            styleUrls: ['app/list/list.component.css'],
-        }),
-        __metadata("design:paramtypes", [http_1.Http,
-            router_1.Router,
-            app_service_1.NoteService])
-    ], ListComponent);
     return ListComponent;
 }());
+ListComponent = __decorate([
+    core_1.Component({
+        selector: 'note',
+        template: "\n<div class=\"note-list-index\">\n    <div align=\"center\">\n        <input id=\"title\" [(ngModel)]=\"search.title\" placeholder=\"Search\" autofocus/>\n    </div>\n    <div class=\"note-list\" self-height=\"$(window).height()-32\">\n        <ul>\n            <li *ngFor=\"let note of notes|SearchPipe:search.title\" (click)=\"showNote(note.id)\">\n                <span class=\"title\">\n                    <span>{{note.title}}</span>\n                </span>\n                <span class=\"update\">{{(note.editTime?note.editTime:note.postTime)|date:'yyyy-MM-dd HH:mm:ss'}}</span>\n            </li>\n        </ul>\n    </div>\n</div>\n    ",
+        styleUrls: ['app/list/list.component.css'],
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, app_service_1.NoteService])
+], ListComponent);
 exports.ListComponent = ListComponent;
+var _a, _b;
 //# sourceMappingURL=list.component.js.map

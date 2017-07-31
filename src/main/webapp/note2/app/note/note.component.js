@@ -58,18 +58,16 @@ var NoteComponent = (function () {
             $("#content")[0].innerHTML = this.note.content;
         }
     };
-    NoteComponent = __decorate([
-        core_1.Component({
-            selector: 'note',
-            template: "\n<div class=\"note-index\" self-height=\"$(window).height()\">\n    <div class=\"book-mark\" [hidden]=\"buttonShow || source==='sw'\" (mouseenter)=\"buttonShow = true\" (mouseleave)=\"buttonDelayHide()\"\n         ng-mouseleave=\"buttonDelayHide()\"><span><img src=\"http://121.42.239.141/note/assets/img/bookmarks.jpg\"></span>\n    </div>\n    <div class=\"operate\" [hidden]=\"!buttonShow\">\n        <button class=\"btn btn-primary\" (click)=\"editNote(0)\">\u65B0\u589E</button>\n        <button class=\"btn btn-danger\" (click)=\"editNote(1)\">\u7F16\u8F91</button>\n        <button class=\"btn btn-default\" (click)=\"backList()\">\u8FD4\u56DE</button>\n    </div>\n    <div class=\"edit\">\n        <span [hidden]=\"!note.editTime\">\u672C\u4E3B\u9898\u6700\u540E\u4E8E{{note.editTime|date:'yyyy-MM-dd HH:mm:ss'}}\u7F16\u8F91</span>\n    </div>\n    <div class=\"title\">\n        \u4E3B\u9898\uFF1A<span>{{note.title}}</span>\n        \u4F5C\u8005\uFF1A<span>{{note.poster}}</span>\n        ip\uFF1A<span>{{note.ip}}</span>\n        \u65F6\u95F4\uFF1A<span>{{note.postTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>\n    </div>\n    <div class=\"box\">\n        <div class=\"content\" id=\"content\"></div>\n    </div>\n</div>\n    ",
-            styleUrls: ['app/note/note.component.css'],
-        }),
-        __metadata("design:paramtypes", [http_1.Http,
-            router_1.Router,
-            router_1.ActivatedRoute,
-            app_service_1.NoteService])
-    ], NoteComponent);
     return NoteComponent;
 }());
+NoteComponent = __decorate([
+    core_1.Component({
+        selector: 'note',
+        template: "\n<div class=\"note-index\" self-height=\"$(window).height()\">\n    <div class=\"book-mark\" [hidden]=\"buttonShow || source==='sw'\" (mouseenter)=\"buttonShow = true\" (mouseleave)=\"buttonDelayHide()\"\n         ng-mouseleave=\"buttonDelayHide()\"><span><img src=\"http://121.42.239.141/note/assets/img/bookmarks.jpg\"></span>\n    </div>\n    <div class=\"operate\" [hidden]=\"!buttonShow\">\n        <button class=\"btn btn-primary\" (click)=\"editNote(0)\">\u65B0\u589E</button>\n        <button class=\"btn btn-danger\" (click)=\"editNote(1)\">\u7F16\u8F91</button>\n        <button class=\"btn btn-default\" (click)=\"backList()\">\u8FD4\u56DE</button>\n    </div>\n    <div class=\"edit\">\n        <span [hidden]=\"!note.editTime\">\u672C\u4E3B\u9898\u6700\u540E\u4E8E{{note.editTime|date:'yyyy-MM-dd HH:mm:ss'}}\u7F16\u8F91</span>\n    </div>\n    <div class=\"title\">\n        \u4E3B\u9898\uFF1A<span>{{note.title}}</span>\n        \u4F5C\u8005\uFF1A<span>{{note.poster}}</span>\n        ip\uFF1A<span>{{note.ip}}</span>\n        \u65F6\u95F4\uFF1A<span>{{note.postTime|date:'yyyy-MM-dd HH:mm:ss'}}</span>\n    </div>\n    <div class=\"box\">\n        <div class=\"content\" id=\"content\"></div>\n    </div>\n</div>\n    ",
+        styleUrls: ['app/note/note.component.css'],
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object, app_service_1.NoteService])
+], NoteComponent);
 exports.NoteComponent = NoteComponent;
+var _a, _b, _c;
 //# sourceMappingURL=note.component.js.map

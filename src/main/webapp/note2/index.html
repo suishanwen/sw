@@ -16,9 +16,9 @@
     <script src="../note2/third-party/TQEditor.2.3.8.min/TQEditor.min.js"></script>
 
     <!-- 2. 配置 SystemJS -->
-    <script src="../note2/systemjs.config.js"></script>
+    <script src="./system-config.js"></script>
     <script>
-        System.import('app').catch(function (err) {
+        System.import('main').catch(function (err) {
             console.error(err);
         });
     </script>

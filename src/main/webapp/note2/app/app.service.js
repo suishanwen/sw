@@ -28,10 +28,10 @@ var NoteService = (function () {
     NoteService.prototype.isNewNote = function () {
         return !this.note.title;
     };
-    NoteService = __decorate([
-        core_1.Injectable()
-    ], NoteService);
     return NoteService;
 }());
+NoteService = __decorate([
+    core_1.Injectable()
+], NoteService);
 exports.NoteService = NoteService;
 //# sourceMappingURL=app.service.js.map

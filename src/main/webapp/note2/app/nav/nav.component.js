@@ -25,15 +25,16 @@ var NavComponent = (function () {
         $(".nav-index .find").css("margin", height + "px 150px");
         RENDERER.init();
     };
-    NavComponent = __decorate([
-        core_1.Component({
-            selector: 'note',
-            template: "\n<div id=\"jsi-cards-container\" class=\"nav-main\">\n    <div class=\"nav-index\">\n        <div class=\"add\" (click)=\"navigate('edit')\"><a>\u65B0\u589E</a></div>\n        <div class=\"find\" (click)=\"navigate('list')\"><a>\u67E5\u770B</a></div>\n    </div>\n</div>\n",
-            styleUrls: ['app/nav/nav.component.css'],
-        }),
-        __metadata("design:paramtypes", [router_1.Router])
-    ], NavComponent);
     return NavComponent;
 }());
+NavComponent = __decorate([
+    core_1.Component({
+        selector: 'note',
+        template: "\n<div id=\"jsi-cards-container\" class=\"nav-main\">\n    <div class=\"nav-index\">\n        <div class=\"add\" (click)=\"navigate('edit')\"><a>\u65B0\u589E</a></div>\n        <div class=\"find\" (click)=\"navigate('list')\"><a>\u67E5\u770B</a></div>\n    </div>\n</div>\n",
+        styleUrls: ['app/nav/nav.component.css'],
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+], NavComponent);
 exports.NavComponent = NavComponent;
+var _a;
 //# sourceMappingURL=nav.component.js.map

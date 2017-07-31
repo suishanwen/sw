@@ -18,12 +18,12 @@ var SearchPipe = (function () {
             return note.title.indexOf(title) !== -1;
         });
     };
-    SearchPipe = __decorate([
-        core_1.Pipe({
-            name: 'SearchPipe'
-        })
-    ], SearchPipe);
     return SearchPipe;
 }());
+SearchPipe = __decorate([
+    core_1.Pipe({
+        name: 'SearchPipe'
+    })
+], SearchPipe);
 exports.SearchPipe = SearchPipe;
 //# sourceMappingURL=search.pipe.js.map

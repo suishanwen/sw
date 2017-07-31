@@ -1,9 +1,8 @@
 import {Routes} from '@angular/router';
-import {NoteComponent} from './note/index';
+import {NoteComponent} from './note';
 import {NavComponent} from "./nav/nav.component";
 import {ListComponent} from "./list/list.component";
 import {EditComponent} from "./edit/edit.component";
-import {NoContentComponent} from './no-content/index';
 
 
 export const ROUTES: Routes = [
@@ -12,5 +11,4 @@ export const ROUTES: Routes = [
     {path: 'list', component: ListComponent},
     {path: 'note', component: NoteComponent},
     {path: 'edit', component: EditComponent},
-    {path: 'no-content', component: NoContentComponent}
 ];
