@@ -19,4 +19,6 @@ nginx:
 
 http://121.42.239.141
 
+http://121.42.239.141/note2/index.html
+
 http://121.42.239.141/me/index.html
