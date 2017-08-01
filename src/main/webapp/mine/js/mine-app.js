@@ -45,7 +45,7 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
 
 
     function openNote(id) {
-        var uri = window.location.href.substring(0, window.location.href.indexOf("/me"));
+        var uri = window.location.href.substring(0, window.location.href.indexOf("/mine"));
         window.open(uri + "/note/index.html#/note?source=sw&&thread=" + id);
     }
 
