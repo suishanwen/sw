@@ -6,6 +6,8 @@ import com.sw.domain.facade.note.NoteFacade;
 import com.sw.domain.util.OnException;
 import com.sw.domain.vo.EnquiryVO;
 import com.sw.domain.vo.PostVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import java.util.List;
 
 @Path("/note")
 public class NoteResource {
+    private static Logger logger = LoggerFactory.getLogger(NoteResource.class);
 
     private NoteFacade noteFacade;
 
@@ -36,7 +39,7 @@ public class NoteResource {
     @Path("add")
     @OnException("addNoteFailed")
     @Produces(MediaType.APPLICATION_JSON)
-    public Note add(Note note,@Context HttpServletRequest request) {
+    public Note add(Note note, @Context HttpServletRequest request) {
         note.setIp(getIpAddr(request));
         return noteFacade.addNote(note);
     }
@@ -47,6 +50,7 @@ public class NoteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Note edit(Note note, @Context HttpServletRequest request) {
         String ip = getIpAddr(request);
+        logger.info("ip: %s to edit note: %s", ip, note.getId());
         if (ip != null && !ip.contains("106.38.88")) {
             if (note.getIp() != null && !ip.equals(note.getIp())) {
                 return null;
@@ -76,7 +80,7 @@ public class NoteResource {
     @Path("enquiry")
     @OnException("sendEnquiryFailed")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response sendEnquiry(EnquiryVO enquiryVO){
+    public Response sendEnquiry(EnquiryVO enquiryVO) {
         noteFacade.sendEnquiry(enquiryVO);
         return Response.ok().build();
     }
