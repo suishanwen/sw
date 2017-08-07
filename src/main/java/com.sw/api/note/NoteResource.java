@@ -51,7 +51,7 @@ public class NoteResource {
     public Note edit(Note note, @Context HttpServletRequest request) {
         String ip = getIpAddr(request);
         logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
-        if (ip != null && !ip.contains("106.38.88")) {
+        if (ip != null && !ip.contains("106.38.88") && !ip.contains("121.42.239.141")) {
             if (note.getIp() != null && !ip.equals(note.getIp())) {
                 return null;
             }
