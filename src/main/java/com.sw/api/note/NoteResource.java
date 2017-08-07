@@ -50,7 +50,7 @@ public class NoteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Note edit(Note note, @Context HttpServletRequest request) {
         String ip = getIpAddr(request);
-        logger.info("ip: %s to edit note: %s", ip, note.getId());
+        logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
         if (ip != null && !ip.contains("106.38.88")) {
             if (note.getIp() != null && !ip.equals(note.getIp())) {
                 return null;
