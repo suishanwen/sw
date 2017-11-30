@@ -59,12 +59,33 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
         $http.post(Path.getUri("api/note/enquiry"), $scope.enquiry);
     }
 
+    function setBitcoinEQ() {
+        var element = $("a.bitcoin");
+        element.hover(function (e) {
+                $("body").append("<p id='bitcoin'><img src='../mine/images/bitcoin.png' /></p>");
+                $("#bitcoin")
+                    .css("top", (e.pageY - 220) + "px")
+                    .css("left", (e.pageX ) + "px")
+                    .css("position","absolute")
+                    .fadeIn("fast");
+            },
+            function () {
+                $("#bitcoin").remove();
+            });
+        element.mousemove(function (e) {
+            $("#bitcoin")
+                .css("top", (e.pageY - 220) + "px")
+                .css("left", (e.pageX) + "px");
+        });
+    }
+
     $scope.getPostTime = getPostTime;
     $scope.openNote = openNote;
     $scope.resetEnquiry = resetEnquiry;
     $scope.sendEmail = sendEmail;
     (function () {
         getRecommend();
+        setBitcoinEQ();
     })()
 }];
 
