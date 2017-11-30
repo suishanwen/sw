@@ -59,7 +59,7 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
         $http.post(Path.getUri("api/note/enquiry"), $scope.enquiry);
     }
 
-    function setBitcoinEQ() {
+    function setBitcoinQR() {
         var element = $("a.bitcoin");
         element.hover(function (e) {
                 $("body").append("<p id='bitcoin'><img src='../mine/images/bitcoin.png' /></p>");
@@ -85,7 +85,7 @@ var mimeController = ["$scope", "$http", "$timeout", "$filter", function ($scope
     $scope.sendEmail = sendEmail;
     (function () {
         getRecommend();
-        setBitcoinEQ();
+        setBitcoinQR();
     })()
 }];
 
