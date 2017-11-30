@@ -433,6 +433,7 @@ h1 {
     text-align: center;
 }
 #templatemo_footer a {
+    cursor: pointer;
     color: #fff;
     text-decoration: none;
 }
