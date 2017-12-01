@@ -438,6 +438,7 @@ h1 {
     text-decoration: none;
 }
 #templatemo_footer a:hover{
+    cursor: pointer;
     text-decoration: underline;
 }
 /*  Small devices (tablets, 768px and up)  */
