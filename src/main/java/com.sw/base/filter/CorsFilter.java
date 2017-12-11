@@ -4,7 +4,6 @@ import com.google.inject.Singleton;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -21,7 +20,7 @@ public class CorsFilter implements Filter {
         res.addHeader("Access-Control-Allow-Credentials", "true");
         res.addHeader("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
         res.addHeader("Access-Control-Max-Age", "600000");
-        res.setContentType("text/html;charset=utf-8");
+        res.setContentType("application/json;charset=utf-8");
         filterChain.doFilter(servletRequest, res);
     }
 
