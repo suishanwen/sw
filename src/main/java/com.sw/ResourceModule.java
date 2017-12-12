@@ -28,8 +28,7 @@ import static com.sw.base.config.Configuration.config;
         {@EmbeddedGrizzly.Asset(uri = "/note", resource = "note"),
                 @EmbeddedGrizzly.Asset(uri = "/mine", resource = "mine"),
                 @EmbeddedGrizzly.Asset(uri = "/note2", resource = "note2"),
-                @EmbeddedGrizzly.Asset(uri = "/note3", resource = "note3"),
-                @EmbeddedGrizzly.Asset(uri = "/demo", resource = "demo")
+                @EmbeddedGrizzly.Asset(uri = "/note3", resource = "note3")
         }
 )
 public class ResourceModule extends ApplicationModule<JpaConfiguration> {
