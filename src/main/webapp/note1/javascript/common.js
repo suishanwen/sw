@@ -11,7 +11,7 @@ function notify(title, body) {
     if (Notification.permission === "granted") {
         return new Notification(title, {
             body: body,
-            icon: "http://121.42.239.141/note1/assets/img/icon.png"
+            icon: "http://121.42.239.141/note1/assets/img/back.jpg"
         });
     }
 }

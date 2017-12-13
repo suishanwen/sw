@@ -87,6 +87,16 @@ public class NoteResource {
 
     private static String getIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
+        String ip1 = request.getHeader("Proxy-Client-IP");
+        String ip2 = request.getHeader("WL-Proxy-Client-IP");
+        String ip3 = request.getHeader("HTTP_CLIENT_IP");
+        String ip4 = request.getHeader("HTTP_X_FORWARDED_FOR");
+        String ip5 = request.getRemoteAddr();
+        logger.info("ip1:"+ip1);
+        logger.info("ip2:"+ip2);
+        logger.info("ip3:"+ip3);
+        logger.info("ip4:"+ip4);
+        logger.info("ip5:"+ip5);
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
