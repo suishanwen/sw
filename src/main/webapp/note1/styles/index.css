@@ -47,7 +47,7 @@ html, body {
     border-radius: 30%;
     background-size: 200px;
     cursor: pointer;
-    font-size: 0px;
+    font-size: 0;
 }
 
 .nav-index .add:hover {
@@ -57,7 +57,7 @@ html, body {
 }
 
 .nav-index .find:hover {
-    background: white url('http://121.42.239.141:8051/note1/assets/img/back2.jpg') no-repeat center;
+    background: white url('http://121.42.239.141/note1/assets/img/back2.jpg') no-repeat center;
     /*background: white url('../assets/img/smile.png') no-repeat center;*/
     background-size: 200px;
 }
