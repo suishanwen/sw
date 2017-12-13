@@ -23,6 +23,6 @@ http://121.42.239.141
 
 http://121.42.239.141/note2/index.html
 
-http://121.42.239.141:8051/sw/note3/index.html (note rebuild by react)
+http://121.42.239.141/note3/index.html (note rebuild by react)
 
 http://121.42.239.141/mine/index.html
