@@ -51,7 +51,7 @@ public class NoteResource {
     public Note edit(Note note, @Context HttpServletRequest request) {
         String ip = getIpAddr(request);
         logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
-        if (ip != null && !ip.contains("106.38.88") && !ip.contains("121.42.239.141")) {
+        if (ip != null && !ip.contains("36.110.123") && !ip.contains("121.42.239.141")) {
             if (note.getIp() != null && !ip.equals(note.getIp())) {
                 return null;
             }
@@ -87,16 +87,6 @@ public class NoteResource {
 
     private static String getIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
-        String ip1 = request.getHeader("Proxy-Client-IP");
-        String ip2 = request.getHeader("WL-Proxy-Client-IP");
-        String ip3 = request.getHeader("HTTP_CLIENT_IP");
-        String ip4 = request.getHeader("HTTP_X_FORWARDED_FOR");
-        String ip5 = request.getRemoteAddr();
-        logger.info("ip1:"+ip1);
-        logger.info("ip2:"+ip2);
-        logger.info("ip3:"+ip3);
-        logger.info("ip4:"+ip4);
-        logger.info("ip5:"+ip5);
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
