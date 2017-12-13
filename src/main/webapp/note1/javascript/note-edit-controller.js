@@ -1,4 +1,4 @@
-var NoteEditController = function ($scope, $http, $timeout, $location, noteService, $debounce) {
+var NoteEditController = ["$scope", "$http", "$timeout", "$location", "noteService", "$debounce", "progress", function ($scope, $http, $timeout, $location, noteService, $debounce, progress) {
     var oldVal = "";
     var tags = [];
     var Note = function () {
@@ -23,13 +23,13 @@ var NoteEditController = function ($scope, $http, $timeout, $location, noteServi
 
     function changeTag() {
         var newVal = $scope.selectedNote.tag;
-        if(newVal !== tags.join("|")){
+        if (newVal !== tags.join("|")) {
             var tag = newVal.substring(oldVal.length);
             tags = oldVal.split("|");
             tags.push(tag);
             if (!isRepeat(tags)) {
                 $scope.selectedNote.tag = tags.join("|");
-            }else {
+            } else {
                 $scope.selectedNote.tag = oldVal;
             }
         }
@@ -42,14 +42,17 @@ var NoteEditController = function ($scope, $http, $timeout, $location, noteServi
         } else {
             url = noteService.server + "api/note/add/";
         }
+        progress.open();
         $http.post(url, $scope.selectedNote).success(function (data) {
             if (angular.equals(data, "") || angular.equals(data, null)) {
                 notify("系统提示", "当前IP不允许编辑此贴！");
                 return;
             }
             sessionStorage.setItem("id", data.id);
+            progress.close();
             $location.path("/note");
         }).error(function (data) {
+            progress.close();
             notify("系统提示", "提交失败！");
         });
     };
@@ -91,4 +94,4 @@ var NoteEditController = function ($scope, $http, $timeout, $location, noteServi
         });
     })();
 
-};
+}];
