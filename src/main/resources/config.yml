@@ -1,6 +1,6 @@
 database:
     driver: com.mysql.jdbc.Driver
-    url: jdbc:mysql://121.42.239.141:3306/sw
+    url: jdbc:mysql://45.77.167.252:3306/sw
     user: root
     password: root
     properties:
