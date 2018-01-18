@@ -91,6 +91,7 @@ task webappBuild(type: Zip) {
 task myBuild(dependsOn: ['fatJar', 'webappBuild']) {
 
 }
+
 fatJar {
     baseName = 'sw'
     manifest {
