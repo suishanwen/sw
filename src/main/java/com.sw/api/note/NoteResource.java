@@ -53,7 +53,7 @@ public class NoteResource {
 		String ip = getIpAddr(request);
 		logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
 		if (ip != null && !ip.contains("36.110.123") && !ip.contains("114.242.249")
-				&& !ip.equals("45.76.191.177") && !ip.equals("121.42.239.141")) {
+				&& !ip.equals("198.13.58.95") && !ip.equals("allinbitcoin.info") && !ip.equals("121.42.239.141")) {
 			if (note.getIp() != null && !ip.equals(note.getIp())) {
 				throw new BusinessException("当前IP没有编辑权限！");
 			}
