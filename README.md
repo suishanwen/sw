@@ -3,26 +3,26 @@ personal server
 
 Guice4 + jersey2 +hibernate5 
 
-jenkins : http://121.42.239.141:8080/jenkins
+jenkins : http://allinbitcoin.info:8080/jenkins
 
-nexus : http://121.42.239.141:8081/nexus
+nexus : http://allinbitcoin.info:8081/nexus
 
 built-in spa:
 
-http://121.42.239.141:8051/sw/note/index.html (note rebuild by react)
+http://allinbitcoin.info:8051/sw/note/index.html (note rebuild by react)
 
-http://121.42.239.141:8051/sw/note1/index.html (note rebuild by angular1)
+http://allinbitcoin.info:8051/sw/note1/index.html (note rebuild by angular1)
 
-http://121.42.239.141:8051/sw/note2/index.html (note rebuild by angular2)
+http://allinbitcoin.info:8051/sw/note2/index.html (note rebuild by angular2)
 
-http://121.42.239.141:8051/sw/mine/index.html
+http://allinbitcoin.info:8051/sw/mine/index.html
 
 nginx:
 
-http://121.42.239.141
+http://allinbitcoin.info
 
-http://121.42.239.141/note1/index.html
+http://allinbitcoin.info/note1/index.html
 
-http://121.42.239.141/note2/index.html
+http://allinbitcoin.info/note2/index.html
 
-http://121.42.239.141/mine/index.html
+http://allinbitcoin.info/mine/index.html

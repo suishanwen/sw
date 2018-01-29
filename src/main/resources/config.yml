@@ -1,6 +1,6 @@
 database:
     driver: com.mysql.jdbc.Driver
-    url: jdbc:mysql://45.76.191.177:3306/sw
+    url: jdbc:mysql://allinbitcoin.info:3306/sw
     user: root
     password: root
     properties:
