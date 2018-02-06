@@ -3,9 +3,9 @@ personal server
 
 Guice4 + jersey2 +hibernate5 
 
-jenkins : http://allinbitcoin.info:8080/jenkins
+jenkins : http://allinbitcoin.info/jenkins
 
-nexus : http://allinbitcoin.info:8081/nexus
+nexus : http://allinbitcoin.info/nexus
 
 built-in spa:
 
