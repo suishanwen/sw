@@ -29,15 +29,10 @@ public class NoteFacade extends BaseFacade {
 
 	@Transactional
 	public Note editNote(Note note) {
-		Note note0 = entityManager.find(Note.class, note.getId());
-		note0.setIp(note.getIp());
-		note0.setContent(note.getContent());
-		note0.setRecommend(note.getRecommend());
-		note0.setSummary(note.getSummary());
-		note0.setTag(note.getTag());
-		note0.setTitle(note.getTitle());
-		note0.setEditTime(new Date());
-		return entityManager.merge(note0);
+		note.setEditTime(new Date());
+		entityManager.merge(note);
+		entityManager.flush();
+		return note;
 	}
 
 
