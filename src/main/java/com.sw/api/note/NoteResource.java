@@ -52,7 +52,7 @@ public class NoteResource {
 	public Note edit(Note note, @Context HttpServletRequest request) {
 		String ip = getIpAddr(request);
 		logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
-		if (ip != null && !ip.equals("93.179.103.149") && !ip.equals("121.42.239.141")) {
+		if (ip != null && !ip.equals("93.179.103.149") && !ip.equals("0:0:0:0:0:0:0:1")) {
 			if (note.getIp() != null && !ip.equals(note.getIp())) {
 				throw new BusinessException("当前IP没有编辑权限！");
 			}
