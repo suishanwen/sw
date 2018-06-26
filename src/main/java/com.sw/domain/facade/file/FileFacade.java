@@ -13,7 +13,7 @@ import java.io.OutputStream;
 
 public class FileFacade {
     private static Logger logger = LoggerFactory.getLogger(FileFacade.class);
-    public static final String path = "/etc/nginx/html/file/";
+    public static final String path = "/etc/nginx/html/file/upload";
     public static final String home = "/home/";
 
     public void uploadFile(FormDataMultiPart multiPart) throws Exception {
