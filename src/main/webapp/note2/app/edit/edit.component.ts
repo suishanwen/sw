@@ -85,7 +85,15 @@ export class EditComponent implements OnInit {
     }
 
     newEditor() {
-        new TQEditor('content');
+        new TQEditor('content', {
+            toolbar: 'full',
+            imageUploadUrl: './upload.htm',
+            directInsertUploadImage: true,
+            flashUploadUrl: './upload.htm',
+            videoUploadUrl: './upload.htm',
+            musicUploadUrl: './upload.htm',
+            linkUploadUrl: './upload.htm'
+        });
         $("#TQEditorContainer_content")[0].style.width = "808px";
         setTimeout(() => {
             $("#content")[0].focus();

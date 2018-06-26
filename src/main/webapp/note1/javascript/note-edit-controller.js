@@ -67,7 +67,15 @@ var NoteEditController = ["$scope", "$http", "$timeout", "$location", "noteServi
     };
 
     $scope.newEditor = function () {
-        new TQEditor('content');
+        new TQEditor('content', {
+            toolbar: 'full',
+            imageUploadUrl: './upload.htm',
+            directInsertUploadImage: true,
+            flashUploadUrl: './upload.htm',
+            videoUploadUrl: './upload.htm',
+            musicUploadUrl: './upload.htm',
+            linkUploadUrl: './upload.htm'
+        });
         $("#TQEditorContainer_content")[0].style.width = "808px";
         var dom = $("#content")[0];
         $timeout(function () {
