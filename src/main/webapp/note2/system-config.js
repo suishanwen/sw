@@ -6,7 +6,7 @@
  **********************************************************************************************/
 var paths = {
     // paths serve as alias
-    'npm:': 'http://121.42.239.141/file/node_modules/'
+    'npm:': 'http://bitcoinrobot.cn/file/node_modules/'
 };
 /** Map relative paths to URLs. */
 var map = {
