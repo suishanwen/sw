@@ -69,12 +69,12 @@ var NoteEditController = ["$scope", "$http", "$timeout", "$location", "noteServi
     $scope.newEditor = function () {
         new TQEditor('content', {
             toolbar: 'full',
-            imageUploadUrl: 'http://localhost:8051/sw/api/file/upload',
+            imageUploadUrl: 'http://bitcoinrobot.cn:8051/sw/api/file/upload',
             directInsertUploadImage: true,
-            flashUploadUrl: 'http://localhost:8051/sw/api/file/upload',
-            videoUploadUrl: 'http://localhost:8051/sw/api/file/upload',
-            musicUploadUrl: 'http://localhost:8051/sw/api/file/upload',
-            linkUploadUrl: 'http://localhost:8051/sw/api/file/upload'
+            flashUploadUrl: 'http://bitcoinrobot.cn:8051/sw/api/file/upload',
+            videoUploadUrl: 'http://bitcoinrobot.cn:8051/sw/api/file/upload',
+            musicUploadUrl: 'http://bitcoinrobot.cn:8051/sw/api/file/upload',
+            linkUploadUrl: 'http://bitcoinrobot.cn:8051/sw/api/file/upload'
         });
         $("#TQEditorContainer_content")[0].style.width = "808px";
         var dom = $("#content")[0];

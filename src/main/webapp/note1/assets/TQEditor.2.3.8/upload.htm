@@ -251,8 +251,8 @@
             // Button Settings
             button_image_url: "btnBg.gif",
             button_placeholder_id: 'container',
-            button_width: 45,
-            button_height: 25,
+            button_width: 500,
+            button_height: 500,
             button_text: '<span class="btn">' + GET.text + '</span>',
             button_text_style: '.btn{line-height:25px;font-size:12px; text-align:center;}',
             button_text_top_padding: 2,
@@ -274,8 +274,11 @@
         type="text/javascript">document.write(GET.exts);</script>)</span></div>
 <div id="resultDiv" class="resultContainer"></div>
 <script type="text/javascript">
-    new SWFUpload(setting);
-    //fixHeight();
+    flash = new SWFUpload(setting);
+    flash.width = 500;
+    flash.height = 500;
+    app.loadPolicyFile("http://localhost:8051/sw/note1/crossdomain.xml");
+    fixHeight();
 </script>
 </body>
 </html>
