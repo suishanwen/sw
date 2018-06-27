@@ -91,6 +91,7 @@ public class NoteResource {
 		logger.info("HTTP_CLIENT_IP:" + request.getHeader("HTTP_CLIENT_IP"));
 		logger.info("HTTP_X_FORWARDED_FOR:" + request.getHeader("HTTP_X_FORWARDED_FOR"));
 		logger.info("X_FORWARDED_FOR:" + request.getHeader("X_FORWARDED_FOR"));
+		logger.info("x-forwarded-for:" + request.getHeader("x-forwarded-for"));
 		logger.info("getRemoteAddr:" + request.getRemoteAddr());
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getHeader("Proxy-Client-IP");
