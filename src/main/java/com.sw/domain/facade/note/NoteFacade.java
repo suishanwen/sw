@@ -35,6 +35,11 @@ public class NoteFacade extends BaseFacade {
 		return note;
 	}
 
+	@Transactional
+	public void deleteNote(Integer id) {
+		entityManager.remove(getNote(id));
+	}
+
 
 	public Note getNote(Integer id) {
 		return entityManager.find(Note.class, id);

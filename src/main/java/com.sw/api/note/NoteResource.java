@@ -59,6 +59,14 @@ public class NoteResource {
 		return noteFacade.editNote(note);
 	}
 
+	@POST
+	@Path("delete")
+	@OnException("deleteNoteFailed")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void delete(Integer id) {
+		noteFacade.deleteNote(id);
+	}
+
 	@GET
 	@Path("get")
 	@OnException("getNoteFailed")
