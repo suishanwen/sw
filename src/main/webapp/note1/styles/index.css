@@ -9,11 +9,21 @@ html, body {
 .badge {
     border-radius: 2px;
 }
-.fa.fa-spinner.fa-pulse{
+
+.fa.fa-spinner.fa-pulse {
     font-size: 32px;
 }
+
 /*背景层*/
-.alert-level{position:fixed;top:0;bottom:0;left:0;right:0;z-index:1060;background-color:rgba(0,0,0,0.2)}
+.alert-level {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1060;
+    background-color: rgba(0, 0, 0, 0.2)
+}
 
 /*----------------------------------------------------nav-index------------------------------------------------*/
 .nav-main {
@@ -88,6 +98,7 @@ html, body {
 .note-edit-index .form-horizontal {
     margin-top: 20px;
 }
+
 .note-edit-index .form-horizontal .form-group input {
     margin-left: 20px;
 }
@@ -99,6 +110,7 @@ html, body {
 .note-edit-index .form-horizontal .poster {
     width: 150px;
 }
+
 .note-edit-index .form-horizontal .summary {
     width: 450px;
 }
@@ -186,7 +198,7 @@ html, body {
     margin: 20px auto;
 }
 
-.note-index .book-mark {
+.note-index .book-mark, .note-index .operate {
     display: block;
     position: absolute;
     cursor: pointer;
@@ -197,6 +209,16 @@ html, body {
 .note-index .book-mark img {
     width: 20px;
     height: 30px;
+}
+
+.note-index .operate ul {
+    border: 1px gainsboro solid;
+    border-radius: 0 30%;
+}
+
+.note-index .operate ul li {
+    margin: 10px 10px;
+    list-style: none;
 }
 
 .eEditorClient {

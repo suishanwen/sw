@@ -16,9 +16,17 @@ declare let $: any,
          ng-mouseleave="buttonDelayHide()"><span><img src="http://bitcoinrobot.cn/file/img/note/bookmarks.jpg"></span>
     </div>
     <div class="operate" [hidden]="!buttonShow">
-        <button class="btn btn-primary" (click)="editNote(0)">新增</button>
-        <button class="btn btn-danger" (click)="editNote(1)">编辑</button>
-        <button class="btn btn-default" (click)="backList()">返回</button>
+        <ul>
+            <li>
+                <button class="btn btn-primary" (click)="editNote(0)">新增</button>
+            </li>
+            <li>
+                <button class="btn btn-danger" (click)="editNote(1)">编辑</button>
+            </li>
+            <li>
+                <button class="btn btn-default" (click)="backList()">返回</button>
+            </li>
+        </ul>
     </div>
     <div class="edit">
         <span [hidden]="!note.editTime">本主题最后于{{note.editTime|date:'yyyy-MM-dd HH:mm:ss'}}编辑</span>
