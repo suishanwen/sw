@@ -201,7 +201,6 @@ html, body {
 .note-index .book-mark, .note-index .operate {
     display: block;
     position: absolute;
-    cursor: pointer;
     margin: auto;
     top: 0;
 }
@@ -209,6 +208,7 @@ html, body {
 .note-index .book-mark img {
     width: 20px;
     height: 30px;
+    cursor: pointer;
 }
 
 .note-index .operate ul {
@@ -219,6 +219,10 @@ html, body {
 .note-index .operate ul li {
     margin: 10px 10px;
     list-style: none;
+}
+
+.note-index .operate ul li > button {
+    cursor: pointer;
 }
 
 .eEditorClient {
