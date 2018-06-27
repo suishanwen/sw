@@ -86,13 +86,6 @@ public class NoteResource {
 
 	private static String getIpAddr(HttpServletRequest request) {
 		String ip = request.getHeader("X-Forwarded-For");
-		logger.info("Proxy-Client-IP:" + request.getHeader("Proxy-Client-IP"));
-		logger.info("WL-Proxy-Client-IP:" + request.getHeader("WL-Proxy-Client-IP"));
-		logger.info("HTTP_CLIENT_IP:" + request.getHeader("HTTP_CLIENT_IP"));
-		logger.info("HTTP_X_FORWARDED_FOR:" + request.getHeader("HTTP_X_FORWARDED_FOR"));
-		logger.info("X_FORWARDED_FOR:" + request.getHeader("X_FORWARDED_FOR"));
-		logger.info("x-forwarded-for:" + request.getHeader("x-forwarded-for"));
-		logger.info("X-Real-IP:" + request.getHeader("X-Real-IP"));
 		logger.info("getRemoteAddr:" + request.getRemoteAddr());
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getHeader("Proxy-Client-IP");
@@ -107,7 +100,7 @@ public class NoteResource {
 			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
 		}
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("X_FORWARDED_FOR");
+			ip = request.getHeader("x-forwarded-for");
 		}
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getRemoteAddr();
