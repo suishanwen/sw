@@ -64,14 +64,13 @@ public class NoteResource {
 	@Path("delete/{id}")
 	@OnException("deleteNoteFailed")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response delete(@PathParam("id") Integer id, String authCodeIn) {
+	public void delete(@PathParam("id") Integer id, String authCodeIn) {
 		String authCode = NoteUtil.readToString("/home/authCode");
 		if (authCode != null && authCodeIn.equals(authCode.trim())) {
 			noteFacade.deleteNote(id);
 		} else {
 			throw new BusinessException("授权码错误！");
 		}
-		return Response.ok().build();
 	}
 
 	@GET
