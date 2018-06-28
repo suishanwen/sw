@@ -66,12 +66,7 @@ public class NoteResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response delete(@PathParam("id") Integer id, String authCodeIn) {
 		String authCode = NoteUtil.readToString("/home/authCode");
-		logger.info("authCodeIn：" + authCodeIn);
-		logger.info("authCode：" + authCode);
-		logger.info("len-authCodeIn:" + authCodeIn.length());
-		logger.info("len-authCode:" + authCode.length());
-		logger.info(authCode.equals(authCodeIn) + "");
-		if (authCodeIn.equals(authCode)) {
+		if (authCode != null && authCodeIn.equals(authCode.trim())) {
 			noteFacade.deleteNote(id);
 		} else {
 			throw new BusinessException("授权码错误！");
