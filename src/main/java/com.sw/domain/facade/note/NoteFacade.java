@@ -19,6 +19,7 @@ public class NoteFacade extends BaseFacade {
 		note.setPostTime(new Date());
 		try {
 			entityManager.persist(note);
+			entityManager.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -1,6 +1,6 @@
 .fa.fa-spinner.fa-pulse {
-    font-size: 32px;
-}
+     font-size: 32px;
+ }
 
 /*背景层*/
 .alert-level {
@@ -13,35 +13,7 @@
     background-color: rgba(0, 0, 0, 0.2)
 }
 
-.note-edit-index .has-success.has-feedback:after {
+.has-success.has-feedback:after {
     content: "" !important;
     color: #4e92f5;
-}
-
-.has-success.has-feedback .ant-form-item-children:after {
-    -webkit-animation-name: diffZoomIn1!important;
-    animation-name: diffZoomIn1!important;
-    content: "\E630";
-    color: #52c41a;
-}
-.has-success.has-feedback .ant-form-item-children:after, .has-warning.has-feedback .ant-form-item-children:after, .has-error.has-feedback .ant-form-item-children:after, .is-validating.has-feedback .ant-form-item-children:after {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    visibility: visible;
-    pointer-events: none;
-    width: 32px;
-    height: 20px;
-    line-height: 20px;
-    margin-top: -10px;
-    text-align: center;
-    font-size: 14px;
-    -webkit-animation: zoomIn 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-    animation: zoomIn 0.3s cubic-bezier(0.12, 0.4, 0.29, 1.46);
-    font-family: 'anticon';
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "";
-    z-index: 1;
 }
