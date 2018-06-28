@@ -4,6 +4,7 @@ package com.sw.api.note;
 import com.sw.base.exception.BusinessException;
 import com.sw.domain.entity.note.Note;
 import com.sw.domain.facade.note.NoteFacade;
+import com.sw.domain.util.NoteUtil;
 import com.sw.domain.util.OnException;
 import com.sw.domain.vo.EnquiryVO;
 import com.sw.domain.vo.PostVo;
@@ -41,7 +42,7 @@ public class NoteResource {
 	@OnException("addNoteFailed")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Note add(Note note, @Context HttpServletRequest request) {
-		note.setIp(getIpAddr(request));
+		note.setIp(NoteUtil.getIpAddr(request));
 		return noteFacade.addNote(note);
 	}
 
@@ -50,7 +51,7 @@ public class NoteResource {
 	@OnException("editNoteFailed")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Note edit(Note note, @Context HttpServletRequest request) {
-		String ip = getIpAddr(request);
+		String ip = NoteUtil.getIpAddr(request);
 		logger.info(String.join(" ", "ip:", ip, "to edit note:", note.getId().toString()));
 		if (ip == null || !ip.equals("198.181.57.231")) {
 			throw new BusinessException("当前IP没有编辑权限！");
@@ -60,11 +61,19 @@ public class NoteResource {
 	}
 
 	@POST
-	@Path("delete")
+	@Path("delete/{id}")
 	@OnException("deleteNoteFailed")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void delete(Integer id) {
-		noteFacade.deleteNote(id);
+	public Response delete(@PathParam("id") Integer id, String authCodeIn) {
+		String authCode = NoteUtil.readToString("/home/authCode");
+		logger.info("authCodeIn：" + authCodeIn);
+		logger.info("authCode：" + authCode);
+		if (authCodeIn.equals(authCode)) {
+			noteFacade.deleteNote(id);
+		} else {
+			throw new BusinessException("授权码错误！");
+		}
+		return Response.ok().build();
 	}
 
 	@GET
@@ -92,27 +101,5 @@ public class NoteResource {
 		return Response.ok().build();
 	}
 
-	private static String getIpAddr(HttpServletRequest request) {
-		String ip = request.getHeader("X-Forwarded-For");
-		logger.info("getRemoteAddr:" + request.getRemoteAddr());
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("WL-Proxy-Client-IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("HTTP_CLIENT_IP");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("x-forwarded-for");
-		}
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getRemoteAddr();
-		}
-		return ip;
-	}
+
 }
