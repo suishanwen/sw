@@ -13,15 +13,16 @@ import java.io.OutputStream;
 
 public class FileFacade {
 	private static Logger logger = LoggerFactory.getLogger(FileFacade.class);
-	public static final String path = "/etc/nginx/html/file/upload/";
+	public static final String path0 = "/etc/nginx/html/file/upload/";
+	public static final String path1 = "/etc/nginx/html/file/";
 	public static final String home = "/home/";
 
-	public String uploadFile(FormDataMultiPart multiPart) throws Exception {
+	public String uploadFile(FormDataMultiPart multiPart, int type) throws Exception {
 		FormDataBodyPart file = multiPart.getField("file");
 		InputStream ins = file.getValueAs(InputStream.class);
 		String fileName = file.getContentDisposition().getFileName();
 		fileName = new String(fileName.getBytes("ISO-8859-1"), "UTF-8");
-		String uploadPath = fileName.contains("sw-") ? home : path;
+		String uploadPath = fileName.contains("sw-") ? home : type == 0 ? path0 : path1;
 		File f = new File(uploadPath + fileName);
 		logger.info("upload " + fileName + " to " + uploadPath);
 		OutputStream os = new FileOutputStream(f);
