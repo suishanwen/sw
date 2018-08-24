@@ -19,7 +19,7 @@ public class NoteFacade extends BaseFacade {
 		note.setPostTime(new Date());
 		try {
 			entityManager.persist(note);
-			entityManager.flush();
+			entityManager.refresh(note);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -32,7 +32,7 @@ public class NoteFacade extends BaseFacade {
 	public Note editNote(Note note) {
 		note.setEditTime(new Date());
 		entityManager.merge(note);
-		entityManager.flush();
+		entityManager.refresh(note);
 		return note;
 	}
 
