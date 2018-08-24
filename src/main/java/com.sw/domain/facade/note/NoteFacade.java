@@ -18,8 +18,7 @@ public class NoteFacade extends BaseFacade {
 	public Note addNote(Note note) {
 		note.setPostTime(new Date());
 		try {
-			entityManager.persist(note);
-			entityManager.refresh(note);
+			persist(note);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -31,14 +30,13 @@ public class NoteFacade extends BaseFacade {
 	@Transactional
 	public Note editNote(Note note) {
 		note.setEditTime(new Date());
-		entityManager.merge(note);
-		entityManager.refresh(note);
+		merge(note);
 		return note;
 	}
 
 	@Transactional
 	public void deleteNote(Integer id) {
-		entityManager.remove(getNote(id));
+		remove(getNote(id));
 	}
 
 
