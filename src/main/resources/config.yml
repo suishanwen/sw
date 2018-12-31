@@ -2,7 +2,7 @@ database:
     driver: com.mysql.jdbc.Driver
     url: jdbc:mysql://bitcoinrobot.cn:3306/sw
     user: root
-    password: root
+    password: q1212456
     properties:
         hibernate.c3p0.max_size: 5
         hibernate.c3p0.min_size: 1
@@ -11,6 +11,5 @@ database:
         hibernate.c3p0.acquire_increment: 5
         hibernate.c3p0.idle_test_period: 60
         hibernate.show_sql: true
-        hibernate.c3p0.testConnectionOnCheckout: true
 http:
     port: 8051
