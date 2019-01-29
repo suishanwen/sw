@@ -97,4 +97,5 @@ public class NoteResource {
 		noteFacade.sendEnquiry(enquiryVO);
 		return Response.ok().build();
 	}
+
 }
