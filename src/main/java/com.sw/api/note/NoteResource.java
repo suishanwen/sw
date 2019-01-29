@@ -98,5 +98,4 @@ public class NoteResource {
 		return Response.ok().build();
 	}
 
-
 }
