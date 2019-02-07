@@ -3,9 +3,9 @@ personal server
 
 Guice4 + jersey2 +hibernate5 
 
-jenkins : http://bitcoinrobot.cn/jenkins
+jenkins : http://jenkins.bitcoinrobot.cn
 
-nexus : http://bitcoinrobot.cn/nexus
+nexus : http://nexus.bitcoinrobot.cn
 
 built-in spa:
 
