@@ -26,3 +26,5 @@ http://bitcoinrobot.cn/note1/index.html
 http://bitcoinrobot.cn/note2/index.html
 
 http://bitcoinrobot.cn/mine/index.html
+
+此服务已使用全新的架构重新实现：https://github.com/suishanwen/note-api
