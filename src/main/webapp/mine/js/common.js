@@ -11,7 +11,7 @@ function notify(title, body) {
     if (Notification.permission === "granted") {
         return new Notification(title, {
             body: body,
-            icon: "http://bitcoinrobot.cn/file/img/note/back.jpg"
+            icon: "https://bitcoinrobot.cn/file/img/note/back.jpg"
         });
     }
 }

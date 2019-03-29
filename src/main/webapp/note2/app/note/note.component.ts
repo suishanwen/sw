@@ -13,7 +13,7 @@ declare let $: any,
     template: `
 <div class="note-index" self-height="$(window).height()">
     <div class="book-mark" [hidden]="buttonShow || source==='sw'" (mouseenter)="buttonShow = true" (mouseleave)="buttonDelayHide()"
-         ng-mouseleave="buttonDelayHide()"><span><img src="http://bitcoinrobot.cn/file/img/note/bookmarks.jpg"></span>
+         ng-mouseleave="buttonDelayHide()"><span><img src="https://bitcoinrobot.cn/file/img/note/bookmarks.jpg"></span>
     </div>
     <div class="operate" [hidden]="!buttonShow">
         <ul>

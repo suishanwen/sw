@@ -33,7 +33,7 @@ public class FileFacade {
 		}
 		os.close();
 		ins.close();
-		String url = "http://bitcoinrobot.cn/file/upload/" + fileName;
+		String url = "https://bitcoinrobot.cn/file/upload/" + fileName;
 		return "{url:'" + url + "', error:'0',message:''}";
 	}
 }
