@@ -1,7 +1,3 @@
-[![HitCount](http://hits.dwyl.io/suishanwen/sw.svg)](http://hits.dwyl.io/suishanwen/sw)
-
-
-
 # sw
 personal server
 
